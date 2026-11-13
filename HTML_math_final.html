@@ -1,0 +1,1110 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>رياضيات الصف التاسع</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Reem+Kufi:wght@500;600;700&family=STIX+Two+Text:ital,wght@0,500;0,600;1,500;1,600&display=swap">
+<style>
+/* Layout: graph-paper header, sticky unit tabs, one column of question cards, each card ends in a worked solution. */
+:root{
+  --paper:#F5F8F2; --surface:#FFFFFF; --ink:#14231D; --ink-soft:#4B5C53; --line:#D3DCD0; --grid:#E2EADD;
+  --accent:#0B6B53; --accent-ink:#FFFFFF; --accent-soft:#DCEFE6; --pencil:#B8322A;
+  --good:#1D7A38; --good-soft:#DDF1E3; --bad:#B3261E; --bad-soft:#F9E0DD; --warn:#9A6700; --warn-soft:#FBF0D4;
+  --display:"Reem Kufi","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --body:"IBM Plex Sans Arabic",Tahoma,"Segoe UI",sans-serif;
+  --math:"STIX Two Text","Times New Roman",serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1713; --surface:#16231D; --ink:#E7EFEA; --ink-soft:#A3B5AB; --line:#2A3B33; --grid:#1A2A23;
+    --accent:#4FC9A2; --accent-ink:#06281D; --accent-soft:#1B3A2F; --pencil:#F0867C;
+    --good:#6BD08A; --good-soft:#18331F; --bad:#F0867C; --bad-soft:#3A1B18; --warn:#E8B04A; --warn-soft:#3A2F14;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1713; --surface:#16231D; --ink:#E7EFEA; --ink-soft:#A3B5AB; --line:#2A3B33; --grid:#1A2A23;
+  --accent:#4FC9A2; --accent-ink:#06281D; --accent-soft:#1B3A2F; --pencil:#F0867C;
+  --good:#6BD08A; --good-soft:#18331F; --bad:#F0867C; --bad-soft:#3A1B18; --warn:#E8B04A; --warn-soft:#3A2F14;
+  color-scheme:dark;
+}
+body{background:var(--paper);color:var(--ink)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+#app{font:400 17px/1.85 var(--body);color:var(--ink);background:var(--paper);min-height:100%}
+#app *{box-sizing:border-box}
+#app svg{direction:ltr}
+.wrap{max-width:880px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* header */
+.top{background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;border-bottom:1px solid var(--line)}
+.top-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;padding-block:28px 24px}
+.top-text{min-width:0;flex:1 1 320px}
+.school{margin:0;font-weight:600;color:var(--accent);font-size:16px}
+h1{font:700 clamp(30px,6.5vw,46px)/1.25 var(--display);margin:4px 0 8px;text-wrap:balance}
+.lede{margin:0;color:var(--ink-soft);max-width:34em}
+.graph{width:180px;height:auto;flex:0 0 auto}
+.g-grid line{stroke:var(--line);stroke-width:1}
+.g-axis{stroke:var(--ink-soft);stroke-width:1.6;fill:none}
+.g-line{stroke:var(--pencil);stroke-width:3;stroke-linecap:round}
+.g-dot{fill:var(--pencil)}
+.g-lab{fill:var(--ink);font:italic 600 14px var(--math)}
+@media (max-width:560px){.graph{display:none}}
+
+/* tabs */
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.tabs-in{display:flex;gap:4px;overflow-x:auto}
+.tabs a{flex:0 0 auto;padding:12px 16px;color:var(--ink-soft);text-decoration:none;font-weight:600;border-bottom:3px solid transparent;margin-bottom:-1px;white-space:nowrap}
+.tabs a[aria-current="page"]{color:var(--accent);border-bottom-color:var(--accent)}
+.tabs a:hover{color:var(--ink)}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+main{padding-block:28px 40px;display:block}
+h2{font:700 28px/1.4 var(--display);margin:0 0 4px;text-wrap:balance}
+.sub{margin:0 0 12px;color:var(--ink-soft)}
+section[hidden]{display:none!important}
+.un{margin:0;font-weight:600;color:var(--accent);font-size:15px}
+.prog{display:inline-block;margin:0 0 20px;padding:2px 14px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:600;font-size:15px}
+
+/* math */
+.m{direction:ltr;unicode-bidi:isolate;display:inline-block;max-width:100%;font-family:var(--math);font-size:1.2em;line-height:1.35;font-weight:500;vertical-align:baseline}
+.m i{font-style:italic}
+.m sup,.m sub{font-size:.7em;line-height:0}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 .15em;line-height:1.25}
+.fr .n{border-bottom:1.5px solid currentColor;padding:0 .25em}
+.fr .d{padding:0 .25em}
+.eq{display:block;text-align:center;margin:6px 0;max-width:100%;overflow-x:auto;overflow-y:hidden}
+.eq .m{font-size:1.35em}
+.exprs{margin:6px 0 4px}
+@media (max-width:480px){.eq .m{font-size:1.15em}}
+
+/* method box */
+.method{background:var(--surface);border:1px solid var(--line);border-radius:10px;margin:0 0 22px}
+.method summary{padding:14px 20px;cursor:pointer;font:700 20px/1.4 var(--display);color:var(--accent);list-style:none;display:flex;align-items:center;gap:12px}
+.method summary::-webkit-details-marker{display:none}
+.method summary::after{content:"";margin-inline-start:auto;width:9px;height:9px;border:solid var(--ink-soft);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.method[open] summary::after{transform:rotate(-135deg)}
+.method-in{padding:2px 20px 20px;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:4px 28px}
+.method h4{font:700 17px/1.5 var(--body);margin:16px 0 4px}
+.method ul,.method ol{margin:0;padding-inline-start:22px}
+.method li{margin:5px 0}
+.mblock{min-width:0}
+
+/* question cards */
+.qlist{display:flex;flex-direction:column;gap:18px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px 20px 18px;scroll-margin-top:72px;min-width:0}
+.q.solved{border-color:var(--good)}
+.q-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin-bottom:6px}
+.qn{font:700 20px/1.2 var(--display);color:var(--accent)}
+.qk{font-size:14px;color:var(--ink-soft)}
+.qtext{margin:0 0 4px;font-size:18px;line-height:1.9}
+.qnote{margin:10px 0 0;padding:8px 12px;border-radius:8px;background:var(--warn-soft);font-size:15px;line-height:1.7}
+.fig{display:flex;justify-content:center;margin:10px 0;overflow-x:auto}
+
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:10px;margin:14px 0 0;padding:0;list-style:none}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:start;font:inherit;padding:10px 14px;border:2px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);cursor:pointer;min-width:0}
+.opt:hover:not([disabled]){border-color:var(--accent)}
+.opt[disabled]{cursor:default}
+.opt .letter{flex:0 0 auto;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-weight:600;font-size:15px;color:var(--ink-soft)}
+.opt .otext{flex:1;min-width:0}
+.opt .mark{font-weight:700;min-width:1.2em;text-align:center}
+.opt.right{border-color:var(--good);background:var(--good-soft)}
+.opt.right .mark{color:var(--good)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt.wrong .mark{color:var(--bad)}
+
+.fields{display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:12px}
+.field{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.field label{font-weight:600}
+.ans{font:600 22px/1.2 var(--math);direction:ltr;text-align:center;width:6.5em;max-width:100%;padding:9px 10px;border:2px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink)}
+.ans:focus{border-color:var(--accent)}
+.ans[readonly]{opacity:.75}
+.qform .btn{margin-top:14px}
+
+.btn{font:inherit;font-weight:600;font-size:16px;line-height:1.4;padding:10px 20px;border-radius:8px;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);cursor:pointer}
+.btn:hover{filter:brightness(1.07)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.ghost:hover{background:var(--accent-soft);filter:none}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+
+.fb{margin-top:14px;padding:11px 14px;border-radius:8px;border:1.5px solid var(--line);font-weight:500}
+.fb.good{background:var(--good-soft);border-color:var(--good)}
+.fb.bad{background:var(--bad-soft);border-color:var(--bad)}
+.fb.warn{background:var(--warn-soft);border-color:var(--warn)}
+.fb b{font-weight:700}
+.fb.good b{color:var(--good)}.fb.bad b{color:var(--bad)}.fb.warn b{color:var(--warn)}
+
+.sol{margin-top:14px;padding:6px 18px 14px;border-radius:8px;background:var(--accent-soft)}
+.steps-h{margin:8px 0 0;font-weight:700;color:var(--accent)}
+.sol ol{margin:6px 0;padding-inline-start:24px}
+.sol li{margin:9px 0;min-width:0}
+.final{margin:10px 0 0;padding-top:10px;border-top:1px dashed var(--line);font-weight:700}
+.scroll{overflow-x:auto;margin:6px 0}
+.tbl{border-collapse:collapse;margin:0 auto;direction:ltr}
+.tbl th,.tbl td{border:1px solid var(--line);padding:2px 14px;text-align:center;background:var(--surface)}
+.tbl th{background:var(--paper)}
+
+/* graphs and venn */
+.gsvg{width:100%;max-width:340px;height:auto}
+.gs-grid line{stroke:var(--line);stroke-width:1}
+.gs-ax line{stroke:var(--ink-soft);stroke-width:1.8}
+.gs-ln{stroke:var(--accent);stroke-width:3;stroke-linecap:round}
+.gs-pt{fill:var(--ink-soft)}
+.gs-key{fill:var(--pencil)}
+.gs-tx{fill:var(--ink-soft);font:500 10px var(--body)}
+.gs-ax-l{fill:var(--ink);font:italic 600 14px var(--math)}
+.gs-lab{fill:var(--ink);font:600 13px var(--math)}
+.vsvg{width:100%;max-width:340px;height:auto}
+.vn-a{fill:var(--accent);fill-opacity:.2;stroke:var(--accent);stroke-width:2.5}
+.vn-b{fill:var(--pencil);fill-opacity:.18;stroke:var(--pencil);stroke-width:2.5}
+.vn-t{fill:var(--ink);font:600 20px var(--math);text-anchor:middle}
+.vn-l{fill:var(--ink);font:italic 700 22px var(--math);text-anchor:middle}
+
+/* quiz */
+.qz-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px;color:var(--ink-soft);font-size:15px;font-weight:600}
+.bar{display:flex;gap:5px;margin-bottom:18px}
+.bar span{flex:1;height:6px;border-radius:3px;background:var(--line)}
+.bar span.on{background:var(--accent)}
+.score{font:700 44px/1.2 var(--display);margin:6px 0}
+.score small{font-size:22px;color:var(--ink-soft);font-weight:500}
+.review{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px 20px}
+.tag{margin:0 0 6px;font-size:14px;font-weight:600;color:var(--accent)}
+
+/* progress system */
+.qs{margin-inline-start:auto;font-size:14px;font-weight:600;padding:2px 12px;border-radius:999px;background:var(--paper);border:1px solid var(--line);color:var(--ink-soft)}
+.qs.good{background:var(--good-soft);border-color:var(--good);color:var(--good)}
+.qs.bad{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.stat b{display:block;font:700 36px/1.3 var(--display);direction:ltr;text-align:right}
+.stat span{color:var(--ink-soft);font-size:15px}
+.stat.good{border-color:var(--good)}.stat.good b{color:var(--good)}
+.stat.bad{border-color:var(--bad)}.stat.bad b{color:var(--bad)}
+.stat.acc b{color:var(--accent)}
+main section>.un:not(:first-child){margin-top:44px;padding-top:28px;border-top:1px solid var(--line)}
+.top{position:relative}
+.lang{position:absolute;top:10px;inset-inline-end:max(16px,env(safe-area-inset-right,0px));z-index:2;font:inherit;font-weight:600;font-size:14px;padding:4px 14px;border:2px solid var(--accent);border-radius:999px;background:var(--surface);color:var(--accent);cursor:pointer}
+#app[dir=ltr] .stat b{text-align:left}
+.set-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.set-h{font:700 22px/1.3 var(--display);margin:32px 0 4px;padding-top:24px;border-top:1px solid var(--line)}
+.foot{border-top:1px solid var(--line);padding-block:18px;color:var(--ink-soft);font-size:14px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<div id="app" dir="rtl" lang="ar">
+  <header class="top">
+    <button id="lang-btn" class="lang" type="button" aria-label="Language / اللغة">English</button>
+    <div class="wrap top-in">
+      <div class="top-text">
+        <p class="school">مدرسة عقبة بن نافع</p>
+        <h1>رياضيات الصف التاسع</h1>
+        <p class="lede">بنك أسئلة الجبر. اقرأ طرق الحل في كل وحدة، ثم أجب عن الأسئلة، وبعد كل إجابة تظهر خطوات الحل.</p>
+      </div>
+      <svg class="graph" viewBox="0 0 180 130" aria-hidden="true">
+        <g class="g-grid">
+          <line x1="20" y1="5" x2="20" y2="125"/><line x1="40" y1="5" x2="40" y2="125"/><line x1="60" y1="5" x2="60" y2="125"/>
+          <line x1="80" y1="5" x2="80" y2="125"/><line x1="100" y1="5" x2="100" y2="125"/><line x1="120" y1="5" x2="120" y2="125"/>
+          <line x1="140" y1="5" x2="140" y2="125"/><line x1="160" y1="5" x2="160" y2="125"/>
+          <line x1="10" y1="10" x2="170" y2="10"/><line x1="10" y1="30" x2="170" y2="30"/><line x1="10" y1="50" x2="170" y2="50"/>
+          <line x1="10" y1="70" x2="170" y2="70"/><line x1="10" y1="110" x2="170" y2="110"/>
+        </g>
+        <path class="g-axis" d="M10 90H172M60 125V4"/>
+        <line class="g-line" x1="20" y1="110" x2="120" y2="10"/>
+        <circle class="g-dot" cx="60" cy="70" r="4"/><circle class="g-dot" cx="80" cy="50" r="4"/>
+        <text class="g-lab" x="128" y="36">y = x + 1</text>
+      </svg>
+    </div>
+  </header>
+
+  <nav class="tabs" aria-label="وحدات الموقع">
+    <div class="wrap tabs-in">
+      <a href="#exponents" data-view="exponents">الأسس</a>
+      <a href="#equations" data-view="equations">المعادلات</a>
+      <a href="#functions" data-view="functions">الدوال الخطية</a>
+      <a href="#sets" data-view="sets">المجموعات</a>
+      <a href="#geometry" data-view="geometry">الهندسة</a>
+      <a href="#random" data-view="random">أسئلة عشوائية</a>
+      <a href="#quiz" data-view="quiz">اختبار</a>
+      <a href="#progress" data-view="progress">أنا</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section id="view-exponents"></section>
+    <section id="view-equations" hidden></section>
+    <section id="view-functions" hidden></section>
+    <section id="view-sets" hidden></section>
+    <section id="view-geometry" hidden></section>
+    <section id="view-random" hidden>
+      <p class="un">تدريب مفتوح</p>
+      <h2>أسئلة عشوائية</h2>
+      <p class="sub">أسئلة جديدة بأرقام مختلفة في كل مرة، من الجبر والهندسة. هذا تدريب حر ولا يدخل في لوحة «أنا».</p>
+      <div class="card" id="rnd-body"></div>
+    </section>
+    <section id="view-progress" hidden></section>
+    <section id="view-quiz" hidden>
+      <p class="un">اختبار قصير</p>
+      <h2>اختبر نفسك</h2>
+      <p class="sub">عشرة أسئلة اختيار من متعدد تُسحب عشوائياً من بنك الأسئلة، وتتغير في كل مرة.</p>
+      <div class="card" id="quiz-body"></div>
+    </section>
+  </main>
+
+  <footer class="foot"><div class="wrap">مدرسة عقبة بن نافع · رياضيات الصف التاسع · الأسئلة من بنك الأسئلة الشامل في الرياضيات</div></footer>
+</div>
+
+<script>
+(function(){
+  var $=function(s){return document.querySelector(s)};
+  var $$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
+  var ri=function(a,b){return Math.floor(Math.random()*(b-a+1))+a};
+  var shuffle=function(arr){var a=arr.slice();for(var i=a.length-1;i>0;i--){var j=ri(0,i);var t=a[i];a[i]=a[j];a[j]=t;}return a};
+  var LET=['أ','ب','ج','د'];
+
+  /* Math markup: [[num|den]] fraction, ^2 or ^{-3} superscript, _1 subscript, Latin letters italic */
+  function m(s){
+    s=String(s)
+      .replace(/\[\[([^|\]]*)\|([^\]]*)\]\]/g,'\u0001$1\u0002$2\u0003')
+      .replace(/\^\{([^}]*)\}/g,'\u0004$1\u0005')
+      .replace(/\^(\d)/g,'\u0004$1\u0005')
+      .replace(/_(\d)/g,'\u0006$1\u0007')
+      .replace(/[A-Za-z]/g,'<i>$&</i>')
+      .replace(/\u0001/g,'<span class="fr"><span class="n">')
+      .replace(/\u0002/g,'</span><span class="d">')
+      .replace(/\u0003/g,'</span></span>')
+      .replace(/\u0004/g,'<sup>').replace(/\u0005/g,'</sup>')
+      .replace(/\u0006/g,'<sub>').replace(/\u0007/g,'</sub>');
+    return '<span class="m">'+s+'</span>';
+  }
+  var E=function(s){return '<span class="eq">'+m(s)+'</span>';};
+
+  /* ---------- figures ---------- */
+  function graphSVG(o){
+    var u=24,p=26,x0=o.xr[0],x1=o.xr[1],y0=o.yr[0],y1=o.yr[1];
+    var W=(x1-x0)*u+2*p,H=(y1-y0)*u+2*p;
+    var X=function(x){return p+(x-x0)*u},Y=function(y){return p+(y1-y)*u};
+    var s='<svg class="gsvg" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+o.label+'"><g class="gs-grid">',i;
+    for(i=x0;i<=x1;i++)s+='<line x1="'+X(i)+'" y1="'+Y(y1)+'" x2="'+X(i)+'" y2="'+Y(y0)+'"/>';
+    for(i=y0;i<=y1;i++)s+='<line x1="'+X(x0)+'" y1="'+Y(i)+'" x2="'+X(x1)+'" y2="'+Y(i)+'"/>';
+    s+='</g><g class="gs-ax"><line x1="'+X(x0)+'" y1="'+Y(0)+'" x2="'+X(x1)+'" y2="'+Y(0)+'"/><line x1="'+X(0)+'" y1="'+Y(y0)+'" x2="'+X(0)+'" y2="'+Y(y1)+'"/></g>';
+    for(i=x0;i<=x1;i++)if(i!==0)s+='<text class="gs-tx" x="'+X(i)+'" y="'+(Y(0)+14)+'" text-anchor="middle">'+String(i).replace('-','−')+'</text>';
+    for(i=y0;i<=y1;i++)if(i!==0)s+='<text class="gs-tx" x="'+(X(0)-6)+'" y="'+(Y(i)+4)+'" text-anchor="end">'+String(i).replace('-','−')+'</text>';
+    s+='<text class="gs-ax-l" x="'+(X(x1)+8)+'" y="'+(Y(0)+4)+'">x</text><text class="gs-ax-l" x="'+(X(0)+8)+'" y="14">y</text>';
+    s+='<line class="gs-ln" x1="'+X(x0)+'" y1="'+Y(o.f(x0))+'" x2="'+X(x1)+'" y2="'+Y(o.f(x1))+'"/>';
+    o.pts.forEach(function(q){
+      s+='<circle class="'+(q.l?'gs-key':'gs-pt')+'" cx="'+X(q.x)+'" cy="'+Y(q.y)+'" r="'+(q.l?5.5:4)+'"/>';
+      if(q.l)s+='<text class="gs-lab" x="'+(X(q.x)+q.dx)+'" y="'+(Y(q.y)+q.dy)+'" text-anchor="'+q.a+'">'+q.l+'</text>';
+    });
+    return s+'</svg>';
+  }
+  var GRAPH19=graphSVG({label:'التمثيل البياني للمستقيم y = x/2 + 2',xr:[-6,6],yr:[-2,6],f:function(x){return x/2+2;},
+    pts:[{x:-4,y:0,l:'(−4, 0)',dx:0,dy:-11,a:'middle'},{x:-2,y:1},{x:0,y:2,l:'(0, 2)',dx:10,dy:-8,a:'start'},{x:2,y:3},{x:4,y:4}]});
+  var GRAPH20=graphSVG({label:'التمثيل البياني للمستقيم 2x + 3y = 6',xr:[-3,6],yr:[-2,5],f:function(x){return 2-2*x/3;},
+    pts:[{x:3,y:0,l:'(3, 0)',dx:0,dy:20,a:'middle'},{x:0,y:2,l:'(0, 2)',dx:10,dy:-8,a:'start'}]});
+  var VENN26='<svg class="vsvg" viewBox="0 0 320 200" role="img" aria-label="شكل فن للمجموعتين A وB">'+
+    '<circle class="vn-a" cx="120" cy="105" r="72"/><circle class="vn-b" cx="200" cy="105" r="72"/>'+
+    '<text class="vn-l" x="82" y="28">A</text><text class="vn-l" x="238" y="28">B</text>'+
+    '<text class="vn-t" x="82" y="98">1</text><text class="vn-t" x="82" y="126">2</text>'+
+    '<text class="vn-t" x="160" y="82">3</text><text class="vn-t" x="160" y="108">4</text><text class="vn-t" x="160" y="134">5</text>'+
+    '<text class="vn-t" x="238" y="98">6</text><text class="vn-t" x="238" y="126">7</text></svg>';
+  function tbl19(){
+    var xs=[-4,-2,0,2,4],ys=[0,1,2,3,4],neg=function(v){return m(String(v).replace('-','−'));};
+    return '<div class="scroll"><table class="tbl"><tr><th>'+m('x')+'</th>'+xs.map(function(v){return '<td>'+neg(v)+'</td>';}).join('')+'</tr><tr><th>'+m('y')+'</th>'+ys.map(function(v){return '<td>'+neg(v)+'</td>';}).join('')+'</tr></table></div>';
+  }
+
+  /* ---------- question bank (26 questions from the file) ---------- */
+  var QS={};
+  function add(q){QS[q.n]=q;}
+  var S21='<span class="m">{ }</span>';
+  var SETS='المجموعتان: '+m('A = {1, 2, 3, 4, 5}')+' و '+m('B = {3, 4, 5, 6, 7}');
+
+  /* Unit 1 */
+  add({n:1,kind:'mcq',text:'بسّط التعبير الجبري التالي في أبسط صورة:',expr:'3x^4y^2 × 2x^2y^3',
+    opts:['6x^6y^5','5x^6y^5','6x^8y^6','5x^8y^6'],ans:0,
+    steps:['نضرب المعاملين (الأعداد): '+m('3 × 2 = 6'),
+      'نجمع أسس '+m('x')+' لأن الأساس واحد: '+m('4 + 2 = 6'),
+      'نجمع أسس '+m('y')+': '+m('2 + 3 = 5'),
+      'نجمع النتائج: '+E('6x^6y^5')]});
+  add({n:2,kind:'mcq',text:'احسب قيمة قسمة المقدارين التاليين:',expr:'(12x^5y^4) ÷ (4x^2y)',
+    opts:['3x^3y^3','3x^7y^5','8x^3y^3','3x^3y^4'],ans:0,
+    steps:['نقسم المعاملين: '+m('12 ÷ 4 = 3'),
+      'نطرح أسس '+m('x')+': '+m('5 − 2 = 3'),
+      'نطرح أسس '+m('y')+' (تذكّر أن '+m('y = y^1')+'): '+m('4 − 1 = 3'),
+      'الناتج: '+E('3x^3y^3')]});
+  add({n:3,kind:'mcq',text:'أوجد قيمة التعبير ذي الأس المرفوع لقوة:',expr:'(2s^3t^2)^3',
+    opts:['8s^9t^6','6s^9t^6','8s^6t^5','2s^9t^6'],ans:0,
+    steps:['نرفع كل عامل داخل القوس إلى القوة 3: '+E('(2s^3t^2)^3 = 2^3 × (s^3)^3 × (t^2)^3'),
+      'قوة القوة: نضرب الأسس. '+m('(s^3)^3 = s^9')+' و '+m('(t^2)^3 = t^6')+' و '+m('2^3 = 8'),
+      'الناتج: '+E('8s^9t^6')]});
+  add({n:4,kind:'mcq',text:'اكتب المقدار ذا الأسس السالبة في صورة أسس موجبة:',expr:'[[x^{−3}y^4|x^2y^{−2}]]',
+    opts:['[[y^6|x^5]]','[[y^2|x^5]]','[[x^5|y^6]]','x^5y^6'],ans:0,
+    steps:['نطرح أسس '+m('x')+' (أس البسط ناقص أس المقام): '+m('−3 − 2 = −5'),
+      'نطرح أسس '+m('y')+': '+m('4 − (−2) = 6'),
+      'يصبح المقدار '+m('x^{−5}y^6'),
+      'الأس السالب ينتقل إلى المقام فيصير موجباً: '+E('x^{−5}y^6 = [[y^6|x^5]]')]});
+  add({n:5,kind:'mcq',text:'بسّط المقدار الجبري التالي:',expr:'(2x^5y^4 × 2xy^3) ÷ (x^3y^7)',
+    opts:['4x^3','4x^3y','2x^3','4x^8y^7'],ans:0,
+    steps:['نبسّط البسط أولاً: '+m('2 × 2 = 4')+' و '+m('x^{5+1} = x^6')+' و '+m('y^{4+3} = y^7')+' فيصبح '+m('4x^6y^7'),
+      'نقسم على '+m('x^3y^7')+': '+E('[[4x^6y^7|x^3y^7]]'),
+      'نطرح الأسس: '+m('x^{6−3} = x^3')+' و '+m('y^{7−7} = y^0 = 1'),
+      'الناتج: '+E('4x^3')]});
+  add({n:6,kind:'num',text:'بسّط المقدار الأسي التالي موضحاً خطوات الحل:',expr:'(3^4 × 3^5) ÷ (3^6)',
+    fields:[{l:'الناتج النهائي',v:27}],final:m('27'),
+    steps:['الأساس واحد (3)، فنجمع الأسس في الضرب: '+E('3^4 × 3^5 = 3^{4+5} = 3^9'),
+      'نقسم على '+m('3^6')+' فنطرح الأسس: '+E('3^9 ÷ 3^6 = 3^{9−6} = 3^3'),
+      'نحسب القيمة: '+E('3^3 = 3 × 3 × 3 = 27')]});
+  add({n:7,kind:'num',text:'أوجد قيمة التعبير الجبري عندما '+m('x = 2')+' و '+m('y = −1')+':',expr:'4x^2y − 3xy^2',
+    fields:[{l:'قيمة التعبير',v:-22}],final:m('−22'),
+    steps:['نعوّض '+m('x = 2')+' و '+m('y = −1')+' ونضع العدد السالب بين قوسين: '+E('4(2)^2(−1) − 3(2)(−1)^2'),
+      'نحسب القوى أولاً: '+m('(2)^2 = 4')+' و '+m('(−1)^2 = 1'),
+      'نضرب ثم نطرح: '+E('4 × 4 × (−1) − 3 × 2 × 1')+E('= −16 − 6 = −22')]});
+
+  /* Unit 2 */
+  add({n:8,kind:'mcq',text:'أوجد قيمة '+m('x')+' التي تحقق المعادلة الخطية:',expr:'3x + 5 = 14',
+    opts:['x = 3','x = 4','x = 5','x = 2'],ans:0,
+    steps:['نطرح 5 من الطرفين: '+E('3x = 14 − 5 = 9'),
+      'نقسم الطرفين على 3: '+E('x = 9 ÷ 3 = 3'),
+      'التحقق: '+m('3(3) + 5 = 14')+' ✓']});
+  add({n:9,kind:'mcq',text:'حل المعادلة التي تحتوي على أقواس:',expr:'2(3x − 4) = 16',
+    opts:['x = 4','x = 3','x = 5','x = 2'],ans:0,
+    steps:['نقسم الطرفين على 2: '+E('3x − 4 = 8'),
+      'نضيف 4 للطرفين: '+E('3x = 12'),
+      'نقسم على 3: '+E('x = 4'),
+      'طريقة ثانية: نفك القوس فنحصل على '+m('6x − 8 = 16')+' ثم '+m('6x = 24')+' فيكون '+m('x = 4'),
+      'التحقق: '+m('2(3 × 4 − 4) = 2 × 8 = 16')+' ✓']});
+  add({n:10,kind:'mcq',text:'أوجد حل المعادلة الكسرية:',expr:'[[2x − 3|5]] = 3',
+    opts:['x = 9','x = 8','x = 10','x = 6'],ans:0,
+    steps:['نضرب الطرفين في المقام 5 للتخلص من الكسر: '+E('2x − 3 = 3 × 5 = 15'),
+      'نضيف 3 للطرفين: '+E('2x = 18'),
+      'نقسم على 2: '+E('x = 9'),
+      'التحقق: '+m('(2 × 9 − 3) ÷ 5 = 15 ÷ 5 = 3')+' ✓']});
+  add({n:11,kind:'mcq',text:'أوجد مجموعة حل نظام المعادلتين الخطيتين:',expr:['x + y = 4','2x + y = 7'],
+    opts:['(3, 1)','(2, 2)','(1, 3)','(4, 0)'],ans:0,
+    steps:['معامل '+m('y')+' واحد في المعادلتين، فنطرح الأولى من الثانية لنحذف '+m('y')+':'+E('(2x + y) − (x + y) = 7 − 4')+E('x = 3'),
+      'نعوّض في '+m('x + y = 4')+': '+m('3 + y = 4')+' فيكون '+m('y = 1'),
+      'التحقق في المعادلة الثانية: '+m('2(3) + 1 = 7')+' ✓']});
+  add({n:12,kind:'mcq',text:'حل نظام المعادلتين بطريقة الحذف:',expr:['3x − y = 12','2x + 3y = 8'],
+    note:'ملاحظة: في الملف الأصلي كُتب الطرفان الأيمنان مبدّلين (8 و 12)، ولا يخرج حينها حل ضمن الخيارات. صحّحناهما ليوافقا مفتاح الإجابة (4, 0).',
+    opts:['(4, 0)','(3, 2)','(2, 2)','(5, 1)'],ans:0,
+    steps:['نريد حذف '+m('y')+'. نضرب المعادلة الأولى في 3 فيصير معامل '+m('y')+' هو '+m('−3')+' في الأولى و '+m('+3')+' في الثانية: '+E('9x − 3y = 36'),
+      'نجمع المعادلتين: '+E('(9x − 3y) + (2x + 3y) = 36 + 8')+E('11x = 44'),
+      'نقسم على 11: '+m('x = 4'),
+      'نعوّض في '+m('3x − y = 12')+': '+m('12 − y = 12')+' فيكون '+m('y = 0'),
+      'التحقق في '+m('2x + 3y = 8')+': '+m('2(4) + 3(0) = 8')+' ✓']});
+  add({n:13,kind:'num',text:'حل نظام المعادلتين التاليين موضحاً خطوات الحذف:',expr:['3x − y = 5','3x + y = 7'],
+    fields:[{l:m('x'),v:2},{l:m('y'),v:1}],final:m('(x, y) = (2, 1)'),
+    steps:['معاملا '+m('y')+' متعاكسان ('+m('−y')+' و '+m('+y')+')، فنجمع المعادلتين لنحذف '+m('y')+':'+E('(3x − y) + (3x + y) = 5 + 7')+E('6x = 12'),
+      'نقسم على 6: '+m('x = 2'),
+      'نعوّض في '+m('3x + y = 7')+': '+m('6 + y = 7')+' فيكون '+m('y = 1'),
+      'التحقق: '+m('3(2) − 1 = 5')+' ✓']});
+  add({n:14,kind:'num',text:'حل النظام التالي بطريقة التعويض:',expr:['x + 4y = 13','2x + 3y = 6'],
+    note:'ملاحظة: في الملف الأصلي كُتبت المعادلة الأولى '+m('x + 4y = 11')+'، وهذا لا يوافق مفتاح الإجابة ('+m('x = −3')+' و '+m('y = 4')+')، فصحّحناها إلى 13.',
+    fields:[{l:m('x'),v:-3},{l:m('y'),v:4}],final:m('(x, y) = (−3, 4)'),
+    steps:['نعزل '+m('x')+' في المعادلة الأولى لأن معامله 1: '+E('x = 13 − 4y'),
+      'نعوّض في المعادلة الثانية: '+E('2(13 − 4y) + 3y = 6'),
+      'نفك القوس ونجمع الحدود المتشابهة: '+E('26 − 8y + 3y = 6')+E('26 − 5y = 6'),
+      'نطرح 26 من الطرفين ثم نقسم على '+m('−5')+': '+E('−5y = −20')+E('y = 4'),
+      'نعوّض في '+m('x = 13 − 4y')+': '+m('x = 13 − 16 = −3'),
+      'التحقق: '+m('2(−3) + 3(4) = −6 + 12 = 6')+' ✓']});
+
+  /* Unit 3 */
+  add({n:15,kind:'mcq',text:'احسب ميل المستقيم الذي يمر بالنقطتين '+m('(2, −1)')+' و '+m('(4, 5)')+':',
+    opts:['m = 3','m = 2','m = −3','m = [[1|2]]'],ans:0,
+    steps:['قانون الميل: '+E('m = [[y_2 − y_1|x_2 − x_1]]'),
+      'نعوّض '+m('(x_1, y_1) = (2, −1)')+' و '+m('(x_2, y_2) = (4, 5)')+':'+E('m = [[5 − (−1)|4 − 2]] = [[6|2]] = 3')]});
+  add({n:16,kind:'mcq',text:'ما هو المقطع الصادي (y-intercept) للمستقيم الذي معادلته:',expr:'y = −x + 3',
+    opts:['b = 3','b = −1','b = −3','b = 0'],ans:0,
+    steps:['نقارن مع الصورة العامة '+m('y = mx + b')+' فنجد '+m('m = −1')+' و '+m('b = 3'),
+      'أو نضع '+m('x = 0')+': '+m('y = 0 + 3 = 3')+' أي أن المستقيم يقطع محور الصادات عند '+m('(0, 3)')]});
+  add({n:17,kind:'mcq',text:'اكتب معادلة المستقيم الذي ميله '+m('m = 3')+' ومقطعه الصادي '+m('b = −2')+':',
+    opts:['y = 3x − 2','y = −2x + 3','y = 3x + 2','y = 2x − 3'],ans:0,
+    steps:['الصورة العامة: '+E('y = mx + b'),
+      'نعوّض '+m('m = 3')+' و '+m('b = −2')+': '+E('y = 3x + (−2) = 3x − 2')]});
+  add({n:18,kind:'mcq',plain:true,text:'حدد العلاقة بين المستقيمين:',expr:['y = 2x + 1','y = 2x − 4'],
+    opts:['مستقيمان متوازيان','مستقيمان متعامدان','مستقيمان متقاطعان','مستقيمان متطابقان'],ans:0,
+    steps:['نقارن ميل كل مستقيم (المعامل الذي بجانب '+m('x')+'): الأول '+m('m_1 = 2')+' والثاني '+m('m_2 = 2'),
+      'الميلان متساويان، والمقطعان الصاديان مختلفان: '+m('b_1 = 1')+' و '+m('b_2 = −4'),
+      'إذن المستقيمان لا يتقاطعان أبداً، وهما متوازيان.']});
+  add({n:19,kind:'show',text:'مثّل بيانياً الدالة الخطية التالية موضحاً جدول النقاط والمقطعين:',expr:'y = [[1|2]]x + 2',
+    hint:'جرّب على ورقة مربعات أولاً، ثم اضغط «اعرض طريقة الحل» لتقارن.',
+    steps:['نكوّن جدول قيم بتعويض قيم مختلفة لـ '+m('x')+' في '+m('y = [[1|2]]x + 2')+':'+tbl19(),
+      'المقطع السيني (نضع '+m('y = 0')+'): '+E('[[1|2]]x + 2 = 0 ⟹ x = −4')+' فالنقطة '+m('(−4, 0)'),
+      'المقطع الصادي (نضع '+m('x = 0')+'): '+E('y = 2')+' فالنقطة '+m('(0, 2)'),
+      'نعيّن النقاط على المستوى ونصل بينها بمسطرة. الميل '+m('[[1|2]]')+' يعني أنه كل وحدتين إلى اليمين يرتفع المستقيم وحدة واحدة.'],
+    solFig:GRAPH19});
+  add({n:20,kind:'num',text:'أوجد نقطة تقاطع المستقيم '+m('2x + 3y = 6')+' مع محوري السينات والصادات.',
+    fields:[{l:'المقطع السيني: '+m('x')+' عندما '+m('y = 0'),v:3},{l:'المقطع الصادي: '+m('y')+' عندما '+m('x = 0'),v:2}],
+    final:m('(3, 0)')+' و '+m('(0, 2)'),
+    steps:['المقطع السيني: نضع '+m('y = 0')+':'+E('2x + 3(0) = 6 ⟹ 2x = 6')+E('x = 3')+' فالنقطة '+m('(3, 0)'),
+      'المقطع الصادي: نضع '+m('x = 0')+':'+E('2(0) + 3y = 6 ⟹ 3y = 6')+E('y = 2')+' فالنقطة '+m('(0, 2)'),
+      'نصل بين النقطتين فنحصل على المستقيم.'],
+    solFig:GRAPH20});
+
+  /* Unit 4 */
+  add({n:21,kind:'mcq',text:'إذا كانت '+m('A = {1, 2, 3, 4, 5}')+' و '+m('B = {3, 4, 5, 6, 7}')+'، فإن مجموعة التقاطع '+m('A ∩ B')+' هي:',
+    opts:['{3, 4, 5}','{1, 2, 6, 7}','{1, 2, 3, 4, 5, 6, 7}','{ }'],ans:0,
+    steps:['التقاطع هو العناصر الموجودة في المجموعتين معاً.',
+      'العناصر المشتركة بين '+m('A')+' و '+m('B')+' هي 3 و 4 و 5.',
+      E('A ∩ B = {3, 4, 5}')]});
+  add({n:22,kind:'mcq',text:'باستخدام نفس المجموعتين أعلاه، أوجد مجموعة الاتحاد '+m('A ∪ B')+':',note:SETS,
+    opts:['{1, 2, 3, 4, 5, 6, 7}','{3, 4, 5}','{1, 2, 6, 7}','{3, 5}'],ans:0,
+    steps:['الاتحاد يضم عناصر المجموعتين معاً، وكل عنصر مشترك يُكتب مرة واحدة فقط.',
+      'نبدأ بعناصر '+m('A')+': '+m('1, 2, 3, 4, 5')+' ثم نضيف من '+m('B')+' العنصرين الجديدين 6 و 7.',
+      E('A ∪ B = {1, 2, 3, 4, 5, 6, 7}')]});
+  add({n:23,kind:'mcq',text:'أوجد مجموعة الفرق '+m('A ∖ B')+' (العناصر الموجودة في '+m('A')+' وليست في '+m('B')+'):',note:SETS,
+    opts:['{1, 2}','{6, 7}','{3, 4, 5}','{1, 2, 3}'],ans:0,
+    steps:['نحذف من '+m('A')+' العناصر المشتركة مع '+m('B')+' وهي 3 و 4 و 5.',
+      'الباقي من '+m('A')+' هو 1 و 2.',
+      E('A ∖ B = {1, 2}')]});
+  add({n:24,kind:'mcq',text:'أيٌّ مما يلي يعبّر عن العلاقة الصحيحة إذا كانت '+m('A = {2, 4}')+' و '+m('U = {1, 2, 3, 4, 5}')+'؟',
+    opts:['A ⊂ U','U ⊂ A','A ∩ U = { }','A ∪ U = A'],ans:0,
+    steps:[m('A ⊂ U')+' تعني أن كل عنصر في '+m('A')+' موجود في '+m('U')+'.',
+      'عنصرا '+m('A')+' هما 2 و 4، وكلاهما في '+m('U')+'، إذن '+m('A ⊂ U')+' صحيحة.',
+      'الخيارات الأخرى خطأ: '+m('U ⊂ A')+' لأن 1 ليس في '+m('A')+'، و '+m('A ∩ U = A')+' وليست مجموعة خالية، و '+m('A ∪ U = U')+' وليست '+m('A')+'.']});
+  add({n:25,kind:'num',text:'إذا كان '+m('n(A) = 15')+' و '+m('n(B) = 12')+' و '+m('n(A ∩ B) = 5')+'، فأوجد '+m('n(A ∪ B)')+' موضحاً القانون المستخدم:',
+    fields:[{l:m('n(A ∪ B)'),v:22}],final:m('n(A ∪ B) = 22'),
+    steps:['القانون: '+E('n(A ∪ B) = n(A) + n(B) − n(A ∩ B)'),
+      'نطرح عدد العناصر المشتركة لأننا عددناها مرتين، مرة في '+m('A')+' ومرة في '+m('B')+'.',
+      'نعوّض: '+E('n(A ∪ B) = 15 + 12 − 5 = 22')]});
+  add({n:26,kind:'show',text:'ارسم شكل فن (Venn Diagram) يوضح العلاقة بين المجموعتين '+m('A')+' و '+m('B')+' وموقع العناصر المشتركة.',note:SETS,
+    hint:'ارسمه على ورقة أولاً، ثم اضغط «اعرض طريقة الحل» لتقارن.',
+    steps:['نرسم دائرتين متقاطعتين، واحدة للمجموعة '+m('A')+' وأخرى للمجموعة '+m('B')+'.',
+      'نضع العناصر المشتركة '+m('{3, 4, 5}')+' في منطقة التقاطع أولاً.',
+      'ثم نضع العناصر الموجودة في '+m('A')+' فقط: '+m('1, 2')+' والموجودة في '+m('B')+' فقط: '+m('6, 7')+'.'],
+    solFig:VENN26});
+
+  /* ---------- geometry figures ---------- */
+  function gridFig(o){
+    var u=o.u,p=22,x0=o.xr[0],x1=o.xr[1],y0=o.yr[0],y1=o.yr[1],W=(x1-x0)*u+2*p,H=(y1-y0)*u+2*p,i;
+    var X=function(x){return p+(x-x0)*u},Y=function(y){return p+(y1-y)*u};
+    var g='<svg class="gsvg" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+o.label+'"><g class="gs-grid">';
+    for(i=x0;i<=x1;i++)g+='<line x1="'+X(i)+'" y1="'+Y(y1)+'" x2="'+X(i)+'" y2="'+Y(y0)+'"/>';
+    for(i=y0;i<=y1;i++)g+='<line x1="'+X(x0)+'" y1="'+Y(i)+'" x2="'+X(x1)+'" y2="'+Y(i)+'"/>';
+    g+='</g><g class="gs-ax"><line x1="'+X(x0)+'" y1="'+Y(0)+'" x2="'+X(x1)+'" y2="'+Y(0)+'"/><line x1="'+X(0)+'" y1="'+Y(y0)+'" x2="'+X(0)+'" y2="'+Y(y1)+'"/></g>';
+    for(i=x0;i<=x1;i++)if(i&&i%o.st===0)g+='<text class="gs-tx" x="'+X(i)+'" y="'+(Y(0)+13)+'" text-anchor="middle">'+String(i).replace('-','−')+'</text>';
+    for(i=y0;i<=y1;i++)if(i&&i%o.st===0)g+='<text class="gs-tx" x="'+(X(0)-5)+'" y="'+(Y(i)+4)+'" text-anchor="end">'+String(i).replace('-','−')+'</text>';
+    (o.lines||[]).forEach(function(l){g+='<line x1="'+X(l[0])+'" y1="'+Y(l[1])+'" x2="'+X(l[2])+'" y2="'+Y(l[3])+'" style="stroke:var(--ink-soft);stroke-dasharray:4 3"/>';});
+    o.polys.forEach(function(q){
+      g+='<polygon points="'+q.p.map(function(v){return X(v[0])+','+Y(v[1]);}).join(' ')+'" style="fill:var('+q.c+');fill-opacity:.25;stroke:var('+q.c+');stroke-width:2.4;stroke-linejoin:round"/>';
+      g+='<text class="gs-lab" x="'+X(q.at[0])+'" y="'+(Y(q.at[1])+4)+'" text-anchor="middle">'+q.l+'</text>';
+    });
+    (o.pts||[]).forEach(function(q){g+='<circle class="gs-key" cx="'+X(q.x)+'" cy="'+Y(q.y)+'" r="5"/><text class="gs-lab" x="'+(X(q.x)+8)+'" y="'+(Y(q.y)+16)+'">'+q.l+'</text>';});
+    return g+'</svg>';
+  }
+  var TA={p:[[2,2],[6,2],[2,6]],c:'--accent',l:'A',at:[3,3]},TB={p:[[-2,2],[-6,2],[-2,6]],c:'--pencil',l:'B',at:[-3,3]},
+      TC={p:[[2,-2],[2,-6],[6,-2]],c:'--good',l:'C',at:[3,-3]},TD={p:[[-3,1],[-3,-3],[1,-3]],c:'--warn',l:'D',at:[-1.5,-1.5]};
+  var FIG1=gridFig({u:18,xr:[-8,8],yr:[-8,8],st:2,label:'المثلثات A وB وC على المستوى الإحداثي',polys:[TA,TB,TC]});
+  var FIG1D=gridFig({u:18,xr:[-8,8],yr:[-8,8],st:2,label:'المثلث A وصورته D بالانسحاب',polys:[TA,TB,TC,TD]});
+  var FIG2=gridFig({u:28,xr:[0,9],yr:[0,9],st:1,label:'تكبير الشكل S1 إلى S2 من المركز O',
+    lines:[[1,1,3,9],[1,1,7,5],[1,1,7,3]],
+    polys:[{p:[[2,2],[4,2],[4,3],[3,3],[3,5],[2,5]],c:'--accent',l:'S1',at:[2.5,3.4]},{p:[[3,3],[7,3],[7,5],[5,5],[5,9],[3,9]],c:'--pencil',l:'S2',at:[4,6.5]}],pts:[{x:1,y:1,l:'O'}]});
+  var FIG3='<svg class="vsvg" viewBox="0 0 300 240" role="img" aria-label="دائرة مركزها O، زاوية مركزية 110°، زاوية محيطية x، ومماس عند C">'+
+    '<path class="vn-a" d="M150 100 L76.3 48.4 A90 90 0 0 1 223.7 48.4 Z"/><circle cx="150" cy="100" r="90" fill="none" style="stroke:var(--ink);stroke-width:2"/>'+
+    '<g style="stroke:var(--accent);stroke-width:2"><line x1="150" y1="100" x2="76.3" y2="48.4"/><line x1="150" y1="100" x2="223.7" y2="48.4"/></g>'+
+    '<g style="stroke:var(--good);stroke-width:2.4"><line x1="76.3" y1="48.4" x2="150" y2="190"/><line x1="223.7" y1="48.4" x2="150" y2="190"/></g>'+
+    '<line x1="70" y1="190" x2="230" y2="190" style="stroke:var(--pencil);stroke-width:3"/><circle cx="150" cy="100" r="3.5" fill="var(--ink)"/>'+
+    '<text class="gs-lab" x="62" y="46">B</text><text class="gs-lab" x="230" y="46">A</text><text class="gs-lab" x="146" y="212">C</text><text class="gs-lab" x="156" y="116">O</text>'+
+    '<text class="gs-lab" x="150" y="80" text-anchor="middle" style="fill:var(--accent)">110°</text><text class="gs-lab" x="150" y="168" text-anchor="middle" style="fill:var(--good)">x</text></svg>';
+  function fig4(sol){
+    var t=function(x,y,a,c,v){return '<text class="gs-lab" x="'+x+'" y="'+y+'" text-anchor="'+a+'" style="fill:'+c+'">'+v+'</text>';};
+    return '<svg class="gsvg" style="max-width:360px" viewBox="0 0 320 160" role="img" aria-label="مستقيمان متوازيان L1 وL2 يقطعهما قاطع">'+
+      '<g class="gs-ax"><line x1="20" y1="45" x2="290" y2="45"/><line x1="20" y1="115" x2="290" y2="115"/></g>'+
+      '<line x1="110" y1="15" x2="210" y2="145" style="stroke:var(--pencil);stroke-width:2.6"/>'+
+      t(296,49,'start','var(--ink)','L1')+t(296,119,'start','var(--ink)','L2')+
+      t(128,36,'end','var(--pencil)','(3x + 25)°')+t(128,66,'end','var(--accent)','y°')+t(182,108,'end','var(--pencil)','(5x − 15)°')+t(182,138,'end','var(--accent)','z°')+'</svg>';
+  }
+  var FIG4=fig4();
+  var CONC=['نصف قطر','وتر','قطر','قوس'];
+
+  /* ---------- geometry questions (from the PDF bank) ---------- */
+  add({n:27,kind:'mcq',fig:FIG1,text:'بالاستعانة بالشكل: ما التحويل الهندسي الذي ينقل المثلث '+m('A')+' إلى المثلث '+m('B')+'؟',
+    opts:['انعكاس في محور الصادات','انعكاس في محور السينات','دوران 90° حول نقطة الأصل','انسحاب بالمتجه (−4, 0)'],ans:0,plain:true,
+    steps:['نأخذ رأساً من '+m('A')+' وصورته في '+m('B')+': '+E('(2, 2) → (−2, 2)'),
+      'الإحداثي السيني تغيّرت إشارته والصادي بقي ثابتاً، وهذه قاعدة الانعكاس في محور الصادات: '+E('(x, y) → (−x, y)')]});
+  add({n:28,kind:'num',fig:FIG1,text:'معادلة خط التماثل (مرآة الانعكاس) بين '+m('A')+' و '+m('B')+' هي '+m('x = ؟'),
+    fields:[{l:'قيمة '+m('x'),v:0}],final:m('x = 0'),
+    steps:['المرآة هي محور الصادات (المحور الرأسي) الذي يمر بالنقطة '+m('x = 0'),'معادلته: '+E('x = 0')]});
+  add({n:29,kind:'mcq',fig:FIG1,text:'ما التحويل الهندسي الذي ينقل المثلث '+m('A')+' إلى المثلث '+m('C')+'؟',
+    opts:['دوران 90° مع عقارب الساعة حول (0, 0)','دوران 90° عكس عقارب الساعة حول (0, 0)','دوران 180° حول (0, 0)','انعكاس في المستقيم y = −x'],ans:0,plain:true,
+    steps:['نجرّب القاعدة '+m('(x, y) → (y, −x)')+' وهي دوران 90° مع عقارب الساعة حول الأصل',
+      E('(2, 2) → (2, −2)')+E('(6, 2) → (2, −6)')+E('(2, 6) → (6, −2)'),'النتائج تطابق رؤوس '+m('C')+'، فالتحويل: دوران 90° مع عقارب الساعة، نقطة المركز '+m('(0, 0)')]});
+  add({n:30,kind:'num',fig:FIG1,text:'انسحب المثلث '+m('A')+' بالمتجه '+m('(−5, −5)')+' لتكوين المثلث '+m('D')+'. أوجد صورة الرأس '+m('(6, 2)')+':',
+    fields:[{l:'الإحداثي السيني',v:1},{l:'الإحداثي الصادي',v:-3}],final:m('(1, −3)'),
+    steps:['قاعدة الانسحاب: '+E('(x, y) → (x − 5, y − 5)'),'نطبقها على الرأس: '+E('(6, 2) → (6 − 5, 2 − 5) = (1, −3)'),
+      'وبالمثل الرأسان الآخران: '+m('(2, 2) → (−3, −3)')+' و '+m('(2, 6) → (−3, 1)')],solFig:FIG1D});
+  add({n:31,kind:'num',fig:FIG2,text:'تم تكبير الشكل '+m('S1')+' للحصول على '+m('S2')+'. حدد إحداثيات مركز التكبير '+m('O')+':',
+    fields:[{l:'الإحداثي السيني',v:1},{l:'الإحداثي الصادي',v:1}],final:m('O(1, 1)'),
+    steps:['نصل كل رأس في '+m('S1')+' بصورته في '+m('S2')+' بمستقيم','المستقيمات تلتقي في النقطة '+m('(1, 1)')+' وهي مركز التكبير']});
+  add({n:32,kind:'num',fig:FIG2,text:'احسب معامل مقياس التكبير '+m('k')+' الذي ينقل '+m('S1')+' إلى '+m('S2')+':',
+    fields:[{l:'معامل التكبير '+m('k'),v:2}],final:m('k = 2'),
+    steps:['نقارن ضلعين متناظرين: القاعدة السفلية في '+m('S1')+' من '+m('x = 2')+' إلى '+m('x = 4')+' فطولها 2، وفي '+m('S2')+' من '+m('x = 3')+' إلى '+m('x = 7')+' فطولها 4',
+      E('k = [[4|2]] = 2')]});
+  add({n:33,kind:'num',fig:FIG2,text:'إذا كان طول أحد أضلاع '+m('S1')+' يساوي 2 سم، فما طول الضلع المناظر له في '+m('S2')+' بالسنتيمتر؟',
+    fields:[{l:'الطول (سم)',v:4}],final:m('4')+' سم',
+    steps:['الطول الجديد = معامل التكبير × الطول الأصلي',E('2 × 2 = 4')]});
+  add({n:34,kind:'num',fig:FIG3,text:'في الدائرة المبينة: '+m('O')+' مركزها، والزاوية المركزية '+m('∠BOA = 110°')+'. أوجد الزاوية المحيطية '+m('x')+' المقابلة لنفس القوس '+m('BA')+':',
+    fields:[{l:m('x')+' (بالدرجات)',v:55}],final:m('x = 55°'),
+    steps:['الزاوية المحيطية تساوي نصف الزاوية المركزية المشتركة معها في نفس القوس',E('x = 110° ÷ 2 = 55°')]});
+  add({n:35,kind:'mcq',fig:FIG3,text:'ما المفهوم الهندسي للقطعة المستقيمة '+m('AO')+' في الشكل؟',opts:CONC,ans:0,plain:true,
+    steps:[m('AO')+' تصل مركز الدائرة '+m('O')+' بنقطة '+m('A')+' على المحيط، فهي نصف قطر']});
+  add({n:36,kind:'mcq',fig:FIG3,text:'ما المفهوم الهندسي للخط الأحمر المار بالنقطة '+m('C')+'؟',opts:['مماس للدائرة','وتر','قاطع','قطر'],ans:0,plain:true,
+    steps:['الخط الأحمر يلامس الدائرة في نقطة واحدة فقط هي '+m('C')+'، فهو مماس']});
+  add({n:37,kind:'mcq',fig:FIG3,text:'ما المفهوم الهندسي للمنطقة المظللة؟',opts:['قطاع دائري','قطعة دائرية','حلقة','نصف دائرة'],ans:0,plain:true,
+    steps:['المنطقة محصورة بين نصفي القطر '+m('OA')+' و '+m('OB')+' والقوس '+m('BA')+'، وهذا هو القطاع الدائري']});
+  add({n:38,kind:'mcq',text:'ما العلاقة بين مماس الدائرة ونصف القطر المار بنقطة التماس؟',
+    opts:['متعامدان (الزاوية بينهما 90°)','متوازيان','ينطبقان','الزاوية بينهما 45°'],ans:0,plain:true,
+    steps:['المماس عمودي على نصف القطر المار بنقطة التماس، والزاوية بينهما '+m('90°')]});
+  add({n:39,kind:'num',fig:FIG4,text:'المستقيمان '+m('L_1')+' و '+m('L_2')+' متوازيان. الزاويتان المتناظرتان تعبيرهما '+m('(3x + 25)°')+' و '+m('(5x − 15)°')+'. أوجد '+m('x')+':',
+    fields:[{l:m('x')+' (بالدرجات)',v:20}],final:m('x = 20°'),
+    steps:['المتناظرتان متساويتان: '+E('3x + 25 = 5x − 15'),'ننقل الحدود: '+E('40 = 2x')+E('x = 20')]});
+  add({n:40,kind:'num',fig:FIG4,text:'احسب قياس الزاوية '+m('y')+' المتكاملة (المكمّلة على استقامة) مع الزاوية المجاورة لها على '+m('L_1')+':',
+    fields:[{l:m('y')+' (بالدرجات)',v:95}],final:m('y = 95°'),
+    steps:['الزاوية المجاورة: '+m('3(20) + 25 = 85°'),'الزاويتان على مستقيم مجموعهما 180°: '+E('y = 180° − 85° = 95°')]});
+  add({n:41,kind:'mcq',fig:FIG4,text:'ما الخاصية الهندسية المستعملة لإيجاد قياس الزاوية '+m('z')+' (انظر الزاويتين '+m('y')+' و '+m('z')+')؟',
+    opts:['الزاويتان المتناظرتان متساويتان: z = y','الزاويتان المتبادلتان داخلياً مجموعهما 180°','مجموع زوايا المثلث 180°','الزاويتان المتقابلتان بالرأس: z = 3x + 25'],ans:0,plain:true,
+    steps:[m('y')+' و '+m('z')+' في الموضع نفسه عند تقاطع القاطع مع المستقيمين المتوازيين، فهما متناظرتان ومتساويتان',E('z = y = 95°')]});
+
+  /* ---------- extra practice questions (42-80) ---------- */
+  function mc(n,text,expr,opts,steps,extra){var q={n:n,kind:'mcq',text:text,expr:expr,opts:opts,ans:0,steps:steps};if(extra)q.plain=true;add(q);}
+  function nm(n,text,expr,fields,final,steps){add({n:n,kind:'num',text:text,expr:expr,fields:fields,final:final,steps:steps});}
+  var FX=[{l:'الإحداثي السيني',v:0},{l:'الإحداثي الصادي',v:0}];
+  function xy(a,b){return [{l:FX[0].l,v:a},{l:FX[1].l,v:b}];}
+  /* Unit 1 */
+  mc(42,'بسّط التعبير الجبري التالي:','5a^3b × 2a^2b^4',['10a^5b^5','7a^5b^5','10a^6b^8','10a^5b^4'],
+    ['نضرب المعاملين: '+m('5 × 2 = 10'),'نجمع أسس '+m('a')+': '+m('3 + 2 = 5'),'نجمع أسس '+m('b')+' (تذكّر أن '+m('b = b^1')+'): '+m('1 + 4 = 5'),'الناتج: '+E('10a^5b^5')]);
+  mc(43,'احسب قيمة قسمة المقدارين التاليين:','(18x^6y^3) ÷ (6x^2y)',['3x^4y^2','12x^4y^2','3x^8y^4','3x^4y^3'],
+    ['نقسم المعاملين: '+m('18 ÷ 6 = 3'),'نطرح أسس '+m('x')+': '+m('6 − 2 = 4'),'نطرح أسس '+m('y')+': '+m('3 − 1 = 2'),'الناتج: '+E('3x^4y^2')]);
+  nm(44,'بسّط المقدار الأسي التالي موضحاً خطوات الحل:','(5^2 × 5^3) ÷ 5^4',[{l:'الناتج النهائي',v:5}],m('5'),
+    ['الأساس واحد، فنجمع الأسس في الضرب: '+E('5^2 × 5^3 = 5^{2+3} = 5^5'),'فنطرح الأسس في القسمة: '+E('5^5 ÷ 5^4 = 5^{5−4} = 5^1'),'الناتج: '+E('5')]);
+  nm(45,'أوجد قيمة التعبير الجبري عندما '+m('x = −2')+' و '+m('y = 3')+':','3x^2 − 2xy',[{l:'قيمة التعبير',v:24}],m('24'),
+    ['نعوّض ونضع العدد السالب بين قوسين: '+E('3(−2)^2 − 2(−2)(3)'),'نحسب القوى أولاً: '+m('(−2)^2 = 4'),'نضرب ثم نطرح: '+E('3 × 4 − (−12) = 12 + 12 = 24')]);
+  mc(46,'اكتب المقدار ذا الأسس السالبة في صورة أسس موجبة:','[[2a^{−3}|b^{−2}]]',['[[2b^2|a^3]]','[[2a^3|b^2]]','[[b^2|2a^3]]','2a^3b^2'],
+    ['الأس السالب ينتقل إلى المقام فيصير موجباً، والعكس صحيح','يبقى المعامل 2 في البسط، وينتقل '+m('a^{−3}')+' إلى المقام و '+m('b^{−2}')+' إلى البسط',E('[[2a^{−3}|b^{−2}]] = [[2b^2|a^3]]')]);
+  nm(47,'أوجد قيمة المقدار التالي:','(−2)^3 + 3^0',[{l:'الناتج النهائي',v:-7}],m('−7'),
+    ['نحسب كل حد: '+m('(−2)^3 = −8')+' و '+m('3^0 = 1'),'أي عدد غير الصفر أسه صفر يساوي 1','نجمع: '+E('−8 + 1 = −7')]);
+  /* Unit 2 */
+  mc(48,'أوجد قيمة '+m('x')+' التي تحقق المعادلة الخطية:','5x − 7 = 18',['x = 5','x = 3','x = 6','x = −5'],
+    ['نضيف '+m('7')+' للطرفين: '+m('5x = 25'),'نقسم الطرفين على '+m('5')+': '+m('x = 5'),'التحقق: '+m('5(5) − 7 = 18')]);
+  nm(49,'حل المعادلة التي تحتوي على أقواس:','2(x + 3) = 3x − 4',[{l:m('x'),v:10}],m('x = 10'),
+    ['نفك القوس فنحصل على: '+E('2x + 6 = 3x − 4'),'ننقل الحدود: '+E('6 + 4 = 3x − 2x')+E('x = 10'),'التحقق: '+m('2(13) = 26')+' و '+m('3(10) − 4 = 26')]);
+  nm(50,'أوجد حل المعادلة الكسرية:','[[x|4]] + 3 = 7',[{l:m('x'),v:16}],m('x = 16'),
+    ['نطرح '+m('3')+' من الطرفين: '+E('[[x|4]] = 4'),'نضرب الطرفين في المقام '+m('4')+' للتخلص من الكسر: '+E('x = 16')]);
+  nm(51,'حل نظام المعادلتين التاليين موضحاً خطوات الحذف:',['x + y = 10','x − y = 4'],[{l:m('x'),v:7},{l:m('y'),v:3}],m('(7, 3)'),
+    ['معاملا '+m('y')+' متعاكسان فنجمع المعادلتين لنحذف '+m('y')+': '+E('2x = 14')+E('x = 7'),'نعوّض في المعادلة الأولى: '+E('7 + y = 10')+E('y = 3'),'التحقق في المعادلة الثانية: '+m('7 − 3 = 4')]);
+  nm(52,'حل النظام التالي بطريقة التعويض:',['y = 2x','x + y = 9'],[{l:m('x'),v:3},{l:m('y'),v:6}],m('(3, 6)'),
+    ['نعوّض '+m('y = 2x')+' في المعادلة الثانية: '+E('x + 2x = 9')+E('3x = 9')+E('x = 3'),'نعوّض في '+m('y = 2x')+': '+E('y = 2(3) = 6'),'التحقق: '+m('3 + 6 = 9')]);
+  mc(53,'أوجد مجموعة حل نظام المعادلتين الخطيتين:',['2x + y = 7','x − y = 2'],['(3, 1)','(1, 3)','(2, 3)','(3, −1)'],
+    ['معاملا '+m('y')+' متعاكسان فنجمع المعادلتين: '+E('3x = 9')+E('x = 3'),'نعوّض في المعادلة الثانية: '+E('3 − y = 2')+E('y = 1'),'التحقق في المعادلة الأولى: '+m('2(3) + 1 = 7')]);
+  /* Unit 3 */
+  nm(54,'احسب ميل المستقيم الذي يمر بالنقطتين '+m('(0, −3)')+' و '+m('(4, 5)')+':',null,[{l:'الميل',v:2}],m('2'),
+    ['قانون الميل: '+E('m = [[y_2 − y_1|x_2 − x_1]]'),E('m = [[5 − (−3)|4 − 0]] = [[8|4]] = 2')]);
+  mc(55,'ما هو المقطع الصادي للمستقيم الذي معادلته '+m('y = −3x + 7')+'؟',null,['(0, 7)','(0, −3)','(7, 0)','(−3, 0)'],
+    ['نقارن مع الصورة العامة '+m('y = mx + b')+' فنجد '+m('b = 7'),'أي أن المستقيم يقطع محور الصادات عند '+m('(0, 7)')]);
+  nm(56,'مستقيم ميله '+m('2')+' ويمر بالنقطة '+m('(1, 5)')+'. أوجد مقطعه الصادي '+m('b')+':',null,[{l:'المقطع الصادي '+m('b'),v:3}],m('b = 3'),
+    ['نعوّض في '+m('y = mx + b')+': '+E('5 = 2(1) + b'),E('b = 5 − 2 = 3'),'معادلة المستقيم: '+m('y = 2x + 3')]);
+  mc(57,'حدد العلاقة بين المستقيمين:',['y = 2x + 1','y = 2x − 5'],['مستقيمان متوازيان','مستقيمان متعامدان','مستقيمان متقاطعان','مستقيمان متطابقان'],
+    ['نقارن ميل كل مستقيم: الميل في الأول '+m('2')+' وفي الثاني '+m('2'),'الميلان متساويان والمقطعان الصاديان مختلفان','إذن المستقيمان لا يتقاطعان أبداً وهما متوازيان'],1);
+  nm(58,'أوجد المقطع السيني للمستقيم الذي معادلته '+m('3x + 2y = 12')+':',null,[{l:'المقطع السيني: '+m('x')+' عندما '+m('y = 0'),v:4}],m('(4, 0)'),
+    ['نضع '+m('y = 0')+': '+E('3x = 12')+E('x = 4'),'فالنقطة '+m('(4, 0)')]);
+  mc(59,'حدد العلاقة بين المستقيمين:',['y = 2x + 1','y = −[[1|2]]x + 3'],['مستقيمان متعامدان','مستقيمان متوازيان','مستقيمان متقاطعان','مستقيمان متطابقان'],
+    ['نقارن الميلين: '+m('2')+' و '+m('−[[1|2]]'),'حاصل ضرب الميلين: '+E('2 × (−[[1|2]]) = −1'),'حاصل ضرب الميلين يساوي '+m('−1')+' إذن المستقيمان متعامدان'],1);
+  /* Unit 4 */
+  var SA=m('A = {2, 4, 6, 8}')+' و '+m('B = {4, 8, 12}');
+  mc(60,'إذا كانت '+SA+'، فأوجد '+m('A ∩ B')+':',null,['{4, 8}','{2, 6}','{2, 4, 6, 8, 12}','{12}'],
+    ['التقاطع هو العناصر الموجودة في المجموعتين معاً','العناصر المشتركة بين '+m('A')+' و '+m('B')+': '+E('A ∩ B = {4, 8}')]);
+  mc(61,'إذا كانت '+SA+'، فأوجد '+m('A ∪ B')+':',null,['{2, 4, 6, 8, 12}','{4, 8}','{2, 6, 12}','{2, 4, 6, 8}'],
+    ['الاتحاد يضم عناصر المجموعتين معاً، وكل عنصر مشترك يُكتب مرة واحدة فقط',E('A ∪ B = {2, 4, 6, 8, 12}')]);
+  mc(62,'إذا كانت '+SA+'، فأوجد مجموعة الفرق '+m('B ∖ A')+':',null,['{12}','{2, 6}','{4, 8}','{2, 4, 6, 8}'],
+    ['العناصر الموجودة في '+m('B')+' وليست في '+m('A'),'نحذف من '+m('B')+' العناصر المشتركة مع '+m('A')+' وهي '+m('{4, 8}'),'الباقي من '+m('B')+': '+E('B ∖ A = {12}')]);
+  nm(63,'إذا كان '+m('n(A) = 20')+' و '+m('n(B) = 14')+' و '+m('n(A ∪ B) = 28')+'، فأوجد '+m('n(A ∩ B)')+':',null,[{l:m('n(A ∩ B)'),v:6}],m('n(A ∩ B) = 6'),
+    ['القانون: '+E('n(A ∪ B) = n(A) + n(B) − n(A ∩ B)'),'نعوّض: '+E('28 = 20 + 14 − n(A ∩ B)'),E('n(A ∩ B) = 34 − 28 = 6')]);
+  nm(64,'في صف فيه 30 طالباً، يلعب كل طالب كرة القدم أو كرة السلة أو اللعبتين معاً. إذا كان 18 طالباً يلعبون كرة القدم و 15 طالباً يلعبون كرة السلة، فكم طالباً يلعب اللعبتين معاً؟',null,[{l:'عدد الطلاب',v:3}],m('3'),
+    ['نرمز بـ '+m('A')+' لكرة القدم وبـ '+m('B')+' لكرة السلة: '+m('n(A) = 18')+' و '+m('n(B) = 15')+' و '+m('n(A ∪ B) = 30'),'نعوّض في القانون: '+E('30 = 18 + 15 − n(A ∩ B)'),E('n(A ∩ B) = 33 − 30 = 3')]);
+  mc(65,'إذا كانت '+m('A = {1, 2}')+' و '+m('B = {1, 2, 3}')+'، فأيٌّ مما يلي صحيح؟',null,['A ⊂ B','B ⊂ A','A = B','A ∩ B = { }'],
+    [m('A ⊂ B')+' تعني أن كل عنصر في '+m('A')+' موجود في '+m('B'),'عنصرا '+m('A')+' هما '+m('1')+' و '+m('2')+' وكلاهما في '+m('B'),'إذن '+m('A ⊂ B')+' صحيحة، والخيارات الأخرى خطأ']);
+  /* Unit 5 */
+  nm(66,'انعكست النقطة '+m('(3, −4)')+' في محور السينات. أوجد إحداثيات صورتها:',null,xy(3,4),m('(3, 4)'),
+    ['الانعكاس في محور السينات: '+E('(x, y) → (x, −y)'),E('(3, −4) → (3, 4)')]);
+  nm(67,'انعكست النقطة '+m('(−5, 2)')+' في محور الصادات. أوجد إحداثيات صورتها:',null,xy(5,2),m('(5, 2)'),
+    ['الانعكاس في محور الصادات: '+E('(x, y) → (−x, y)'),E('(−5, 2) → (5, 2)')]);
+  nm(68,'دُوِّرت النقطة '+m('(4, 1)')+' بزاوية 90° مع عقارب الساعة حول نقطة الأصل. أوجد إحداثيات صورتها:',null,xy(1,-4),m('(1, −4)'),
+    ['دوران 90° مع عقارب الساعة حول الأصل: '+E('(x, y) → (y, −x)'),E('(4, 1) → (1, −4)')]);
+  nm(69,'انسحبت النقطة '+m('(−2, 3)')+' بالمتجه '+m('(4, −6)')+'. أوجد إحداثيات صورتها:',null,xy(2,-3),m('(2, −3)'),
+    ['قاعدة الانسحاب: '+E('(x, y) → (x + 4, y − 6)'),E('(−2 + 4, 3 − 6) = (2, −3)')]);
+  mc(70,'دُوِّرت النقطة '+m('(3, −2)')+' بزاوية 180° حول نقطة الأصل. ما إحداثيات صورتها؟',null,['(−3, 2)','(3, 2)','(−3, −2)','(2, −3)'],
+    ['الدوران 180° حول الأصل يغيّر إشارة الإحداثيين معاً: '+E('(x, y) → (−x, −y)'),E('(3, −2) → (−3, 2)')]);
+  nm(71,'كُبِّر مثلث بمعامل تكبير '+m('k = 3')+'. إذا كان طول أحد أضلاعه 4 سم، فما طول الضلع المناظر في الصورة بالسنتيمتر؟',null,[{l:'الطول (سم)',v:12}],m('12')+' سم',
+    ['الطول الجديد = معامل التكبير × الطول الأصلي',E('3 × 4 = 12')]);
+  nm(72,'طول ضلع في شكل 5 سم، وطول الضلع المناظر له في صورته بعد التكبير 15 سم. احسب معامل التكبير '+m('k')+':',null,[{l:'معامل التكبير '+m('k'),v:3}],m('k = 3'),
+    ['معامل التكبير = طول الضلع في الصورة ÷ طول الضلع المناظر في الأصل',E('k = [[15|5]] = 3')]);
+  mc(73,'كُبِّرت النقطة '+m('(3, 4)')+' بمعامل تكبير '+m('k = 2')+' من مركز التكبير نقطة الأصل '+m('(0, 0)')+'. ما إحداثيات صورتها؟',null,['(6, 8)','(5, 6)','(1.5, 2)','(9, 12)'],
+    ['نضرب كل إحداثي في معامل التكبير',E('(2 × 3, 2 × 4) = (6, 8)')]);
+  /* Unit 6 */
+  nm(74,'في دائرة، قياس الزاوية المركزية '+m('80°')+'. أوجد قياس الزاوية المحيطية المقابلة لنفس القوس بالدرجات:',null,[{l:'القياس',v:40}],m('40°'),
+    ['الزاوية المحيطية تساوي نصف الزاوية المركزية المشتركة معها في نفس القوس',E('80° ÷ 2 = 40°')]);
+  nm(75,'في دائرة، قياس الزاوية المحيطية '+m('35°')+'. أوجد قياس الزاوية المركزية المقابلة لنفس القوس بالدرجات:',null,[{l:'القياس',v:70}],m('70°'),
+    ['الزاوية المركزية تساوي ضعف الزاوية المحيطية المشتركة معها في نفس القوس',E('2 × 35° = 70°')]);
+  mc(76,'ما قياس الزاوية بين المماس ونصف القطر المار بنقطة التماس؟',null,['90°','45°','180°','60°'],
+    ['المماس عمودي على نصف القطر المار بنقطة التماس، والزاوية بينهما '+m('90°')]);
+  nm(77,'من النقطة '+m('P')+' خارج الدائرة رُسم المماس '+m('PC')+' حيث '+m('C')+' نقطة التماس، و '+m('O')+' مركز الدائرة. إذا كان '+m('∠OPC = 30°')+' فأوجد '+m('∠POC')+' بالدرجات:',null,[{l:m('∠POC'),v:60}],m('∠POC = 60°'),
+    ['المماس عمودي على نصف القطر عند نقطة التماس، فإن '+m('∠OCP = 90°'),'مجموع زوايا المثلث '+m('180°')+': '+E('∠POC = 180° − 90° − 30° = 60°')]);
+  nm(78,'المستقيمان '+m('L_1')+' و '+m('L_2')+' متوازيان ويقطعهما قاطع. الزاويتان المتبادلتان داخلياً تعبيرهما '+m('(2x + 10)°')+' و '+m('(4x − 30)°')+'. أوجد '+m('x')+':',null,[{l:m('x')+' (بالدرجات)',v:20}],m('x = 20°'),
+    ['المتبادلتان داخلياً متساويتان: '+E('2x + 10 = 4x − 30'),'ننقل الحدود: '+E('40 = 2x')+E('x = 20')]);
+  nm(79,'زاويتان متجاورتان على مستقيم، قياسهما '+m('(4x + 20)°')+' و '+m('(2x + 10)°')+'. أوجد '+m('x')+':',null,[{l:m('x')+' (بالدرجات)',v:25}],m('x = 25°'),
+    ['الزاويتان المتجاورتان على مستقيم مجموعهما 180°: '+E('4x + 20 + 2x + 10 = 180'),E('6x = 150')+E('x = 25')]);
+  mc(80,'تقاطع مستقيمان، وقياس إحدى الزوايا الناتجة '+m('70°')+'. ما قياس الزاوية المقابلة لها بالرأس؟',null,['70°','110°','20°','290°'],
+    ['الزاويتان المتقابلتان بالرأس متساويتان، فقياسها '+m('70°')]);
+
+  /* ---------- units ---------- */
+  var UNITS=[
+    {id:'exponents',n:'الوحدة الأولى',title:'العبارات الجبرية وقوانين الأسس',scope:'ضرب وقسمة القوى، الأسس السالبة، وتبسيط المقادير الجبرية.',qs:[1,2,3,4,5,6,7,42,43,44,45,46,47],
+     method:[
+      {t:'قوانين الأسس',tag:'ul',items:[
+        'ضرب قوى لها الأساس نفسه، نجمع الأسس: '+m('a^m × a^n = a^{m+n}'),
+        'قسمة قوى لها الأساس نفسه، نطرح الأسس: '+m('a^m ÷ a^n = a^{m−n}'),
+        'قوة القوة، نضرب الأسس: '+m('(a^m)^n = a^{mn}'),
+        'قوة حاصل الضرب، نرفع كل عامل للقوة: '+m('(ab)^n = a^n b^n'),
+        'الأس السالب ينتقل إلى المقام: '+m('a^{−n} = [[1|a^n]]'),
+        'أي عدد غير الصفر أسه صفر يساوي 1: '+m('a^0 = 1')]},
+      {t:'خطوات تبسيط الحدود الجبرية',tag:'ol',items:[
+        'تعامل مع المعاملات (الأعداد) وحدها: اضرب أو اقسم.',
+        'ثم تعامل مع كل متغير وحده بقوانين الأسس.',
+        'المتغير الذي لا أس له أسه 1، مثل '+m('y = y^1')+'.',
+        'عند التعويض، ضع العدد السالب بين قوسين ثم احسب القوى قبل الضرب.']}]},
+    {id:'equations',n:'الوحدة الثانية',title:'المعادلات الخطية وأنظمة المعادلات بمجهولين',scope:'حل معادلة بمجهول واحد، وحل أنظمة المعادلات بطريقتي الحذف والتعويض.',qs:[8,9,10,11,12,13,14,48,49,50,51,52,53],
+     method:[
+      {t:'معادلة بمجهول واحد',tag:'ol',items:[
+        'افتح الأقواس إن وجدت.',
+        'إن كان في المعادلة كسر، اضرب الطرفين في المقام.',
+        'اجمع الحدود المتشابهة.',
+        'انقل الأعداد إلى طرف والمجهول إلى الطرف الآخر بالعملية العكسية.',
+        'اقسم على معامل '+m('x')+'، ثم تحقق بالتعويض.']},
+      {t:'طريقة الحذف',tag:'ol',items:[
+        'ضع المعادلتين تحت بعضهما.',
+        'اضرب إحدى المعادلتين (أو كلتيهما) في عدد مناسب ليتساوى معامل أحد المتغيرين في القيمة المطلقة.',
+        'اجمع المعادلتين إذا اختلفت الإشارتان، واطرحهما إذا تشابهتا، فيُحذف المتغير.',
+        'حل المعادلة الناتجة، ثم عوّض لإيجاد المتغير الآخر.']},
+      {t:'طريقة التعويض',tag:'ol',items:[
+        'اعزل أحد المتغيرين في إحدى المعادلتين، والأسهل ما معامله 1.',
+        'عوّض الناتج في المعادلة الأخرى فتصير بمجهول واحد.',
+        'حلّها، ثم عوّض القيمة لإيجاد المتغير الثاني.',
+        'تحقق بالتعويض في المعادلتين.']}]},
+    {id:'functions',n:'الوحدة الثالثة',title:'الدوال الخطية والتمثيل البياني والميل',scope:'معادلة المستقيم، الميل، المقاطع الإحداثية، والرسم البياني.',qs:[15,16,17,18,19,20,54,55,56,57,58,59],
+     method:[
+      {t:'قوانين المستقيم',tag:'ul',items:[
+        'الميل: '+m('m = [[y_2 − y_1|x_2 − x_1]]'),
+        'معادلة المستقيم: '+m('y = mx + b')+' حيث '+m('m')+' الميل و '+m('b')+' المقطع الصادي.',
+        'المقطع الصادي: ضع '+m('x = 0')+' واحسب '+m('y')+'.',
+        'المقطع السيني: ضع '+m('y = 0')+' واحسب '+m('x')+'.']},
+      {t:'العلاقة بين مستقيمين',tag:'ul',items:[
+        'متوازيان: الميلان متساويان والمقطعان الصاديان مختلفان.',
+        'متقاطعان: الميلان مختلفان.',
+        'متعامدان: '+m('m_1 × m_2 = −1')+'.',
+        'متطابقان: الميل والمقطع الصادي متساويان.',
+        'للرسم: كوّن جدول قيم لثلاث نقاط على الأقل، عيّنها، ثم صل بينها بالمسطرة.']}]},
+    {id:'sets',n:'الوحدة الرابعة',title:'المجموعات والعمليات عليها وأشكال فن',scope:'التقاطع، الاتحاد، الفرق، المجموعة الجزئية، وشكل فن.',qs:[21,22,23,24,25,26,60,61,62,63,64,65],
+     method:[
+      {t:'العمليات على المجموعات',tag:'ul',items:[
+        'التقاطع '+m('A ∩ B')+': العناصر المشتركة بين '+m('A')+' و '+m('B')+'.',
+        'الاتحاد '+m('A ∪ B')+': عناصر المجموعتين معاً دون تكرار.',
+        'الفرق '+m('A ∖ B')+': عناصر '+m('A')+' التي ليست في '+m('B')+'.',
+        'المجموعة الجزئية '+m('A ⊂ U')+': كل عنصر في '+m('A')+' موجود في '+m('U')+'.']},
+      {t:'عدد العناصر وشكل فن',tag:'ul',items:[
+        m('n(A ∪ B) = n(A) + n(B) − n(A ∩ B)'),
+        'في شكل فن ارسم دائرتين متقاطعتين، وضع العناصر المشتركة في منطقة التقاطع أولاً، ثم عناصر كل مجموعة وحدها.']}]},
+    {id:'transforms',v:'geometry',n:'الوحدة الخامسة',title:'الهندسة الإحداثية والتحويلات الهندسية',scope:'الانعكاس والدوران والانسحاب على المستوى الإحداثي، والتكبير ومعامل المقياس.',qs:[27,28,29,30,31,32,33,66,67,68,69,70,71,72,73],
+      method:[
+       {t:'التحويلات على المستوى الإحداثي',tag:'ul',items:[
+         'الانعكاس في محور الصادات: '+m('(x, y) → (−x, y)'),'الانعكاس في محور السينات: '+m('(x, y) → (x, −y)'),
+         'دوران 90° مع عقارب الساعة حول الأصل: '+m('(x, y) → (y, −x)'),'دوران 90° عكس عقارب الساعة: '+m('(x, y) → (−y, x)'),
+         'الانسحاب بالمتجه '+m('(a, b)')+': '+m('(x, y) → (x + a, y + b)')]},
+       {t:'التكبير',tag:'ul',items:[
+         'معامل التكبير '+m('k')+' = طول الضلع في الصورة ÷ طول الضلع المناظر في الأصل',
+         'الطول الجديد = '+m('k')+' × الطول الأصلي','مركز التكبير: نقطة تلتقي فيها المستقيمات الواصلة بين كل نقطة وصورتها']}]},
+    {id:'circle',v:'geometry',n:'الوحدة السادسة',title:'أجزاء الدائرة والزوايا في الدائرة',scope:'نظريات الزوايا والمماس، والزوايا الناتجة عن توازي المستقيمات.',qs:[34,35,36,37,38,39,40,41,74,75,76,77,78,79,80],
+      method:[
+       {t:'الدائرة',tag:'ul',items:['الزاوية المحيطية = نصف الزاوية المركزية المشتركة معها في نفس القوس','المماس عمودي على نصف القطر عند نقطة التماس',
+         'نصف القطر: من المركز إلى المحيط. القطاع الدائري: منطقة بين نصفي قطر وقوس']},
+       {t:'المستقيمات المتوازية والقاطع',tag:'ul',items:['الزاويتان المتناظرتان متساويتان','الزاويتان المتبادلتان داخلياً متساويتان','الزاويتان المتجاورتان على مستقيم مجموعهما 180°']}]},
+  ];
+  var UNIT_OF={};UNITS.forEach(function(u){u.qs.forEach(function(n){UNIT_OF[n]=u;});});
+
+  /* ---------- progress storage (LocalStorage, schema v1) ----------
+     {v:1,last:{n,t},q:{"<n>":{round,shown,attempts:[{a:answer,ok,r:round,t:time,s:'bank'|'quiz'}]}}}
+     Attempts are only ever appended; "retry" starts a new round, it never deletes anything. */
+  var P=(function(){
+    var KEY='math9.progress.v1',mem=null,good=true;
+    function blank(){return {v:1,last:null,q:{}};}
+    function clean(d){
+      var o=blank();
+      if(!d||typeof d!=='object'||Array.isArray(d))return o;
+      if(d.last&&typeof d.last.n==='number')o.last={n:d.last.n,t:Number(d.last.t)||0};
+      if(d.q&&typeof d.q==='object')Object.keys(d.q).forEach(function(k){
+        var r=d.q[k];if(!r||typeof r!=='object')return;
+        var at=Array.isArray(r.attempts)?r.attempts.filter(function(a){return a&&typeof a.ok==='boolean'&&a.a!==undefined&&a.a!==null;}).map(function(a){return {a:a.a,ok:a.ok,r:Number(a.r)||0,t:Number(a.t)||0,s:a.s==='quiz'?'quiz':'bank'};}):[];
+        o.q[k]={round:Math.max(0,Number(r.round)||0),shown:r.shown===true,attempts:at};
+      });
+      return o;
+    }
+    function read(){
+      var raw;
+      try{raw=localStorage.getItem(KEY);}catch(e){good=false;return mem?clean(mem):blank();}
+      if(raw===null||raw===undefined)return mem?clean(mem):blank();
+      try{return clean(JSON.parse(raw));}
+      catch(e){try{localStorage.setItem(KEY+'.corrupt',raw);}catch(e2){}return blank();}
+    }
+    function write(d){mem=d;try{localStorage.setItem(KEY,JSON.stringify(d));}catch(e){good=false;}}
+    function rec(d,n){return d.q[n]||(d.q[n]={round:0,shown:false,attempts:[]});}
+    function touch(d,n){d.last={n:Number(n),t:Date.now()};}
+    return {
+      ok:function(){return good;},
+      q:function(n){return read().q[n]||{round:0,shown:false,attempts:[]};},
+      last:function(){return read().last;},
+      record:function(n,a,ok,src){var d=read(),r=rec(d,n);r.attempts.push({a:a,ok:ok,r:r.round,t:Date.now(),s:src});touch(d,n);write(d);},
+      shown:function(n){var d=read();rec(d,n).shown=true;touch(d,n);write(d);},
+      newRound:function(n){var d=read(),r=rec(d,n);r.round++;r.shown=false;touch(d,n);write(d);},
+      clear:function(){mem=null;try{localStorage.removeItem(KEY);}catch(e){}},
+      wrong:function(){
+        var d=read(),o=[];
+        Object.keys(QS).forEach(function(n){if(QS[n].kind==='show')return;var a=(d.q[n]||{}).attempts;if(a&&a.length&&!a[a.length-1].ok)o.push(Number(n));});
+        return o.sort(function(x,y){return x-y;});
+      },
+      stats:function(){
+        var d=read(),s={total:0,essay:0,answered:0,correct:0,wrong:0};
+        Object.keys(QS).forEach(function(n){
+          if(QS[n].kind==='show'){s.essay++;return;}
+          s.total++;var r=d.q[n];if(!r||!r.attempts.length)return;
+          s.answered++;r.attempts.forEach(function(a){if(a.ok)s.correct++;else s.wrong++;});
+        });
+        var all=[],run=0;s.best=0;
+        Object.keys(d.q).forEach(function(n){if(!QS[n]||QS[n].kind==='show')return;d.q[n].attempts.forEach(function(a){all.push({t:a.t,o:all.length,ok:a.ok});});});
+        all.sort(function(x,y){return x.t-y.t||x.o-y.o;});
+        all.forEach(function(a){run=a.ok?run+1:0;if(run>s.best)s.best=run;});
+        s.remaining=s.total-s.answered;var t=s.correct+s.wrong;
+        s.accuracy=t?Math.round(s.correct*100/t):null;return s;
+      }
+    };
+  })();
+  window.StudentProgress={stats:P.stats,question:P.q,last:P.last};
+
+  function chip(card,q){
+    var el=card.querySelector('.qs');if(!el)return;
+    var a=P.q(q.n).attempts,st=a.length?(a[a.length-1].ok?'good':'bad'):'none';
+    el.className='qs '+st;
+    el.textContent=(st==='good'?'✓ صحيح':st==='bad'?'✗ خاطئ':'لم تتم الإجابة')+(a.length?' · المحاولات: '+a.length:'');
+  }
+  function afterAttempt(card,q){chip(card,q);updateDash();}
+  function restoreCard(card,q){
+    var rec=P.q(q.n),fb=card.querySelector('.fb');
+    var cur=rec.attempts.filter(function(a){return a.r===rec.round;}),last=cur[cur.length-1];
+    if(last&&q.kind==='mcq'){
+      var run=[];for(var i=cur.length-1;i>=0&&!cur[i].ok;i--)run.push(cur[i].a);
+      run.forEach(function(k){var w=card.querySelector('.opt[data-k="'+k+'"]');if(w){w.classList.add('wrong');w.disabled=true;w.querySelector('.mark').textContent='✗';}});
+      if(last.ok){
+        var r=card.querySelector('.opt[data-k="'+last.a+'"]');if(r){r.classList.add('right');r.querySelector('.mark').textContent='✓';}
+        markSolved(card,q);setFb(fb,'good','<b>✓ إجابة صحيحة.</b> هذه خطوات الحل للمراجعة.');reveal(card,q);
+      }else setFb(fb,'bad','<b>✗ آخر محاولة لم تكن صحيحة.</b> جرّب خياراً آخر، أو اضغط «اعرض طريقة الحل».');
+    }else if(last&&q.kind==='num'){
+      var ins=card.querySelectorAll('.ans');
+      if(Array.isArray(last.a))last.a.forEach(function(v,i){if(ins[i])ins[i].value=v;});
+      if(last.ok){markSolved(card,q);setFb(fb,'good','<b>✓ إجابة صحيحة.</b> هذه خطوات الحل للمراجعة.');reveal(card,q);}
+      else setFb(fb,'bad','<b>✗ آخر محاولة لم تكن صحيحة.</b> راجع طرق الحل ثم حاول مرة ثانية، أو اضغط «اعرض طريقة الحل».');
+    }
+    if(rec.shown)reveal(card,q);
+    chip(card,q);
+  }
+  /* ---------- settings: theme (auto / light / dark), saved in LocalStorage ---------- */
+  function curTheme(){var t='auto';try{t=localStorage.getItem('math9.theme')||'auto';}catch(e){}return t==='dark'||t==='light'?t:'auto';}
+  function applyTheme(){var t=curTheme(),r=document.documentElement;if(t==='auto')r.removeAttribute('data-theme');else r.setAttribute('data-theme',t);}
+  function setTheme(t){try{if(t==='auto')localStorage.removeItem('math9.theme');else localStorage.setItem('math9.theme',t);}catch(e){}applyTheme();updateDash();}
+  function settingsHTML(){
+    var c=curTheme();
+    return '<h3 class="set-h">الإعدادات</h3><p class="sub">المظهر</p><div class="set-row">'+
+      [['auto','تلقائي'],['light','فاتح'],['dark','داكن']].map(function(o){return '<button type="button" class="btn'+(c===o[0]?'':' ghost')+'" data-th="'+o[0]+'" aria-pressed="'+(c===o[0])+'">'+o[1]+'</button>';}).join('')+
+      '</div><p class="sub">«تلقائي» يتبع إعدادات جهازك.</p>';
+  }
+  applyTheme();
+  /* ---------- review wrong questions + reset ---------- */
+  var rAsk=false;
+  function reviewHTML(){
+    var w=P.wrong(),st=P.stats();
+    var h='<h3 class="set-h">راجع أسئلتي الخاطئة</h3><p class="sub">أسئلة كانت آخر محاولة فيها خاطئة. صحّحها وستختفي من القائمة.</p>';
+    if(!w.length)return h+'<p>'+(st.answered?'لا توجد أسئلة خاطئة. أحسنت!':'ستظهر هنا الأسئلة التي تخطئ فيها.')+'</p>';
+    return h+'<div class="set-row">'+w.map(function(n){return '<button type="button" class="btn ghost" data-q="'+n+'">س'+n+'</button>';}).join('')+'</div>'+
+      '<button type="button" class="btn" data-q="'+w[0]+'">ابدأ بأول سؤال</button>';
+  }
+  function resetHTML(){
+    return '<p class="sub" style="margin-top:20px">بيانات التقدم</p>'+(rAsk?
+      '<p class="fb bad"><b>هل أنت متأكد؟</b> سيُحذف كل تقدمك وجميع محاولاتك ولا يمكن استرجاعها.</p><div class="set-row"><button type="button" class="btn" data-rs="yes">نعم، امسح كل شيء</button><button type="button" class="btn ghost" data-rs="no">إلغاء</button></div>':
+      '<button type="button" class="btn ghost" data-rs="ask">مسح تقدمي</button>');
+  }
+  function updateDash(){
+    var el=$('#view-progress');if(!el)return;
+    var s=P.stats(),l=P.last();
+    function t(c,v,lab){return '<div class="stat '+c+'"><b>'+v+'</b><span>'+lab+'</span></div>';}
+    el.innerHTML='<p class="un">تقدمك وإعداداتك</p><h2>أنا</h2><p class="sub">يُحفظ تقدمك تلقائياً على هذا الجهاز وفي هذا المتصفح.</p>'+
+      (P.ok()?'':'<p class="fb warn"><b>تنبيه:</b> تعذّر استخدام التخزين في هذا المتصفح، لذلك لن يُحفظ تقدمك بعد إغلاق الصفحة.</p>')+
+      '<div class="stats">'+t('',s.total,'إجمالي الأسئلة')+t('',s.answered,'أسئلة أجبت عنها')+t('',s.remaining,'أسئلة متبقية')+
+      t('good',s.correct,'الإجابات الصحيحة')+t('bad',s.wrong,'الإجابات الخاطئة')+t('acc',s.accuracy===null?'—':s.accuracy+'%','نسبة الإجابات الصحيحة')+t('good',s.best,'أعلى ستريك للإجابات الصحيحة')+'</div>'+
+      '<p class="sub">الستريك هو أكبر عدد من الإجابات الصحيحة المتتالية دون خطأ بينها.</p>'+
+      '<p class="sub">الإجابات الصحيحة والخاطئة والنسبة تُحسب من جميع المحاولات، أما إجمالي الأسئلة والمتبقية فيُحسبان لكل سؤال مرة واحدة. الأسئلة المقالية ('+s.essay+') غير محتسبة لأنك تقارنها بالحل بنفسك.</p>'+
+      (l&&QS[l.n]?'<p>آخر سؤال وصلت إليه: <b>س'+l.n+'</b> · '+UNIT_OF[l.n].title+'</p><button class="btn" type="button" data-q="'+l.n+'">تابع من س'+l.n+'</button>':'<p>لم تبدأ بعد. اختر وحدة وابدأ بحل الأسئلة.</p>')+reviewHTML()+settingsHTML()+resetHTML();
+  }
+
+  /* ---------- rendering ---------- */
+  var KIND={mcq:'اختيار من متعدد',num:'اكتب الإجابة',show:'سؤال مقالي'};
+  function exprHTML(e){
+    if(!e)return '';
+    var a=Array.isArray(e)?e:[e];
+    return '<div class="exprs">'+a.map(function(x){return '<div class="eq">'+m(x)+'</div>';}).join('')+'</div>';
+  }
+  function figHTML(q){return q.fig?'<div class="fig">'+q.fig+'</div>':'';}
+  function optText(q,k){return q.plain?q.opts[k]:m(q.opts[k]);}
+  function solHTML(q){
+    var f=q.final||(q.kind==='mcq'?optText(q,q.ans):'');
+    return '<p class="steps-h">طريقة الحل</p><ol>'+q.steps.map(function(s){return '<li>'+s+'</li>';}).join('')+'</ol>'+
+      (q.solFig?'<div class="fig">'+q.solFig+'</div>':'')+(f?'<p class="final">الجواب: '+f+'</p>':'');
+  }
+  function cardHTML(q){
+    var h='<article class="q" id="q'+q.n+'" data-n="'+q.n+'">';
+    h+='<div class="q-head"><span class="qn">س'+q.n+'</span><span class="qk">'+KIND[q.kind]+'</span>'+(q.kind==='show'?'':'<span class="qs"></span>')+'</div>';
+    h+='<p class="qtext">'+q.text+'</p>'+exprHTML(q.expr)+figHTML(q);
+    if(q.note)h+='<p class="qnote">'+q.note+'</p>';
+    if(q.kind==='mcq'){
+      h+='<ul class="opts">'+shuffle([0,1,2,3]).map(function(k,pos){
+        return '<li><button class="opt" type="button" data-k="'+k+'"><span class="letter">'+LET[pos]+'</span><span class="otext">'+optText(q,k)+'</span><span class="mark"></span></button></li>';
+      }).join('')+'</ul>';
+    }else if(q.kind==='num'){
+      h+='<form class="qform" autocomplete="off"><div class="fields">'+q.fields.map(function(f,i){
+        return '<div class="field"><label for="f'+q.n+'-'+i+'">'+f.l+'</label><input id="f'+q.n+'-'+i+'" class="ans" type="text" inputmode="text" autocomplete="off" enterkeyhint="done"></div>';
+      }).join('')+'</div><button class="btn" type="submit">تحقق</button></form>';
+    }else{
+      h+='<p class="qnote" style="background:var(--accent-soft)">'+q.hint+'</p>';
+    }
+    h+='<div class="fb" aria-live="polite" hidden></div><div class="sol" hidden>'+solHTML(q)+'</div>';
+    h+='<div class="actions"><button class="btn ghost q-show" type="button">اعرض طريقة الحل</button><button class="btn ghost q-reset" type="button">أعد المحاولة</button></div></article>';
+    return h;
+  }
+  function methodHTML(u){
+    return '<details class="method" open><summary>طرق الحل</summary><div class="method-in">'+u.method.map(function(b){
+      return '<div class="mblock"><h4>'+b.t+'</h4><'+b.tag+'>'+b.items.map(function(i){return '<li>'+i+'</li>';}).join('')+'</'+b.tag+'></div>';
+    }).join('')+'</div></details>';
+  }
+  var solved={};
+  function updateProg(){
+    UNITS.forEach(function(u){
+      var c=u.qs.filter(function(n){return solved[n];}).length;
+      $('#prog-'+u.id).textContent='أنجزت '+c+' من '+u.qs.length;
+    });
+  }
+  UNITS.forEach(function(u){
+    $('#view-'+(u.v||u.id)).innerHTML+='<p class="un">'+u.n+'</p><h2>'+u.title+'</h2><p class="sub">'+u.scope+'</p><p class="prog" id="prog-'+u.id+'"></p>'+
+      methodHTML(u)+'<div class="qlist">'+u.qs.map(function(n){return cardHTML(QS[n]);}).join('')+'</div>';
+  });
+  Object.keys(QS).forEach(function(n){var c=$('#q'+n);if(c)restoreCard(c,QS[n]);});
+  updateProg();updateDash();
+
+  /* ---------- bank interactions ---------- */
+  function setFb(el,kind,html){el.hidden=false;el.className='fb '+kind;el.innerHTML=html;}
+  function reveal(card,q){
+    card.querySelector('.sol').hidden=false;
+    card.querySelector('.q-show').hidden=true;
+    if(q.kind==='show'){solved[q.n]=true;updateProg();}
+  }
+  function markSolved(card,q){
+    card.classList.add('solved');solved[q.n]=true;updateProg();
+    $$('#q'+q.n+' .opt').forEach(function(b){b.disabled=true;});
+    $$('#q'+q.n+' .ans').forEach(function(i){i.readOnly=true;});
+  }
+  function remount(n){
+    var old=$('#q'+n),t=document.createElement('div');
+    delete solved[n];t.innerHTML=cardHTML(QS[n]);var nc=t.firstElementChild;old.replaceWith(nc);restoreCard(nc,QS[n]);updateProg();
+  }
+  function parseNum(s){
+    s=String(s).trim()
+      .replace(/[٠-٩]/g,function(d){return d.charCodeAt(0)-0x660})
+      .replace(/[۰-۹]/g,function(d){return d.charCodeAt(0)-0x6F0})
+      .replace(/[−–—]/g,'-').replace(/[٫,]/g,'.').replace(/\s+/g,'')
+      .replace(/^[a-zA-Z]=/,'');
+    return /^-?\d+(\.\d+)?$/.test(s)?Number(s):null;
+  }
+  function pickOpt(card,q,b){
+    if(card.classList.contains('solved'))return;
+    var k=Number(b.getAttribute('data-k')),fb=card.querySelector('.fb');
+    P.record(q.n,k,k===q.ans,'bank');afterAttempt(card,q);
+    if(k===q.ans){
+      b.classList.add('right');b.querySelector('.mark').textContent='✓';
+      markSolved(card,q);setFb(fb,'good','<b>✓ إجابة صحيحة.</b> هذه خطوات الحل للمراجعة.');reveal(card,q);
+    }else{
+      b.classList.add('wrong');b.disabled=true;b.querySelector('.mark').textContent='✗';
+      setFb(fb,'bad','<b>✗ ليست صحيحة.</b> جرّب خياراً آخر، أو اضغط «اعرض طريقة الحل».');
+    }
+  }
+  function checkNum(card,q){
+    var fb=card.querySelector('.fb'),ins=$$('#q'+q.n+' .ans'),vals=ins.map(function(i){return parseNum(i.value);});
+    if(vals.some(function(v){return v===null;})){setFb(fb,'warn','<b>اكتب رقماً في كل خانة.</b> مثال: 7 أو −3');return;}
+    var ok=q.fields.every(function(f,i){return Math.abs(vals[i]-f.v)<1e-9;});
+    P.record(q.n,ins.map(function(i){return i.value;}),ok,'bank');afterAttempt(card,q);
+    if(ok){markSolved(card,q);setFb(fb,'good','<b>✓ إجابة صحيحة.</b> هذه خطوات الحل للمراجعة.');reveal(card,q);}
+    else setFb(fb,'bad','<b>✗ ليست صحيحة.</b> راجع طرق الحل في أعلى الوحدة ثم حاول مرة ثانية، أو اضغط «اعرض طريقة الحل».');
+  }
+
+  var app=$('#app');
+  app.addEventListener('click',function(e){
+    var b=e.target.closest('button');if(!b)return;
+    var card=b.closest('.q');
+    if(card){
+      var n=Number(card.getAttribute('data-n')),q=QS[n];
+      if(b.classList.contains('opt'))pickOpt(card,q,b);
+      else if(b.classList.contains('q-show')){P.shown(n);reveal(card,q);updateDash();}
+      else if(b.classList.contains('q-reset')){P.newRound(n);remount(n);updateDash();}
+      return;
+    }
+    if(b.closest('#quiz-body'))quizClick(b);
+    else if(b.closest('#rnd-body'))rndClick(b);
+    else if(b.getAttribute('data-rs')){var ra=b.getAttribute('data-rs');if(ra==='yes'){P.clear();location.reload();}else{rAsk=ra==='ask';updateDash();}}
+    else if(b.getAttribute('data-th'))setTheme(b.getAttribute('data-th'));
+    else if(b.getAttribute('data-q'))goQuestion(Number(b.getAttribute('data-q')));
+  });
+  app.addEventListener('submit',function(e){
+    var f=e.target.closest('form.qform');if(!f)return;
+    e.preventDefault();
+    var card=f.closest('.q');
+    if(card.classList.contains('solved'))return;
+    checkNum(card,QS[Number(card.getAttribute('data-n'))]);
+  });
+
+  /* ---------- quiz ---------- */
+  var qz={items:[],i:0,score:0,answered:false,missed:[]};
+  var qbody=$('#quiz-body');
+  function startQuiz(){
+    var pool=Object.keys(QS).map(Number).filter(function(n){return QS[n].kind==='mcq';});
+    qz.items=shuffle(pool).slice(0,10).map(function(n){return {n:n,order:shuffle([0,1,2,3])};});
+    qz.i=0;qz.score=0;qz.answered=false;qz.missed=[];
+    renderQuiz();
+  }
+  function renderQuiz(){
+    var n=qz.items.length;
+    if(qz.i>=n){
+      var msg=qz.score>=9?'ممتاز، مستواك قوي في الجبر.':qz.score>=6?'جيد. راجع الأسئلة التي أخطأت فيها ثم أعد الاختبار.':'راجع طرق الحل في كل وحدة وتدرّب على الأسئلة، ثم أعد الاختبار.';
+      var review=qz.missed.map(function(x){return '<button class="btn ghost" type="button" data-goto="'+x+'">راجع س'+x+'</button>';}).join('');
+      qbody.innerHTML='<p class="tag">نتيجتك</p><p class="score">'+qz.score+' <small>من '+n+'</small></p><p>'+msg+'</p>'+
+        (review?'<p class="sub" style="margin-top:14px">الأسئلة التي أخطأت فيها:</p><div class="review">'+review+'</div>':'')+
+        '<div class="actions"><button class="btn" type="button" data-act="restart">أعد الاختبار</button></div>';
+      return;
+    }
+    var it=qz.items[qz.i],q=QS[it.n],bar='';
+    for(var k=0;k<n;k++)bar+='<span'+(k<=qz.i?' class="on"':'')+'></span>';
+    qz.answered=false;
+    qbody.innerHTML='<div class="qz-top"><span>السؤال '+(qz.i+1)+' من '+n+'</span><span>الدرجة: '+qz.score+'</span></div><div class="bar" aria-hidden="true">'+bar+'</div>'+
+      '<p class="tag">س'+q.n+' · '+UNIT_OF[q.n].title+'</p><p class="qtext">'+q.text+'</p>'+exprHTML(q.expr)+figHTML(q)+
+      '<ul class="opts">'+it.order.map(function(k,pos){
+        return '<li><button class="opt" type="button" data-k="'+k+'"><span class="letter">'+LET[pos]+'</span><span class="otext">'+optText(q,k)+'</span><span class="mark"></span></button></li>';
+      }).join('')+'</ul><div id="qz-fb" aria-live="polite"></div>'+
+      '<div class="actions"><button class="btn" type="button" id="qz-next" hidden>'+(qz.i===n-1?'عرض النتيجة':'السؤال التالي')+'</button></div>';
+  }
+  function quizClick(t){
+    if(t.classList.contains('opt')){
+      if(qz.answered)return;qz.answered=true;
+      var it=qz.items[qz.i],q=QS[it.n],pk=Number(t.getAttribute('data-k')),ok=pk===q.ans;
+      if(ok)qz.score++;else qz.missed.push(q.n);
+      P.record(q.n,pk,ok,'quiz');remount(q.n);updateDash();
+      $$('#quiz-body .opt').forEach(function(b){
+        var k=Number(b.getAttribute('data-k'));b.disabled=true;
+        if(k===q.ans){b.classList.add('right');b.querySelector('.mark').textContent='✓';}
+        else if(k===pk){b.classList.add('wrong');b.querySelector('.mark').textContent='✗';}
+      });
+      $('#qz-fb').innerHTML='<div class="fb '+(ok?'good':'bad')+'"><b>'+(ok?'✓ إجابة صحيحة.':'✗ إجابة غير صحيحة.')+'</b></div><div class="sol">'+solHTML(q)+'</div>';
+      var nx=$('#qz-next');nx.hidden=false;nx.focus();
+    }else if(t.id==='qz-next'){qz.i++;renderQuiz();}
+    else if(t.getAttribute('data-act')==='restart'){startQuiz();}
+    else if(t.getAttribute('data-goto')){goQuestion(Number(t.getAttribute('data-goto')));}
+  }
+
+  /* ---------- routing ---------- */
+  var VIEWS=['exponents','equations','functions','sets','geometry','random','quiz','progress'],pendingQ=null;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function route(){
+    var v=(location.hash||'#exponents').slice(1);
+    if(VIEWS.indexOf(v)<0)v='exponents';
+    if(v==='progress')updateDash();
+    VIEWS.forEach(function(n){$('#view-'+n).hidden=(n!==v)});
+    $$('.tabs a').forEach(function(a){if(a.getAttribute('data-view')===v)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+    if(pendingQ){
+      var c=$('#q'+pendingQ);pendingQ=null;
+      if(c){c.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});return;}
+    }
+    window.scrollTo(0,0);
+  }
+  function nav(v){if(location.hash==='#'+v)route();else location.hash=v;}
+  function goQuestion(n){pendingQ=n;nav(UNIT_OF[n].v||UNIT_OF[n].id);}
+  window.addEventListener('hashchange',route);
+
+  /* ---------- random practice (generated, not saved in progress) ---------- */
+  var sg=function(n){return n<0?'− '+(-n):'+ '+n;};
+  var GEN=[
+    function(){var b=ri(2,5),a=ri(2,4),c=ri(2,4),d=ri(1,a+c-1),v=Math.pow(b,a+c-d);
+      return {t:'احسب قيمة المقدار:',e:'(%b^%a × %b^%c) ÷ %b^%d'.replace(/%b/g,b).replace('%a',a).replace('%c',c).replace('%d',d),f:[{l:'الناتج',v:v}],
+        s:['نجمع الأسس في الضرب: '+m(b+'^'+(a+c)),'نطرح أس القسمة: '+m(b+'^'+(a+c-d)),'القيمة: '+m(String(v))]};},
+    function(){var x=ri(-6,9)||3,a=ri(2,7),b=ri(-9,9),c=a*x+b;
+      return {t:'أوجد قيمة '+m('x')+':',e:a+'x '+sg(b)+' = '+c,f:[{l:m('x'),v:x}],s:['ننقل الثابت: '+m(a+'x = '+(c-b)),'نقسم على '+m(String(a))+': '+m('x = '+x)]};},
+    function(){var a=ri(2,5),b=ri(2,5),x=ri(-3,4),y=ri(-3,4),v=a*x*x+b*y;
+      return {t:'أوجد قيمة التعبير عندما '+m('x = '+x)+' و '+m('y = '+y)+':',e:a+'x^2 + '+b+'y',f:[{l:'القيمة',v:v}],s:['نعوّض: '+m(a+'('+x+')^2 + '+b+'('+y+')'),'القيمة: '+m(String(v))]};},
+    function(){var k=ri(-4,4)||2,dx=ri(1,4),x1=ri(-3,3),y1=ri(-3,3),dy=k*dx;
+      return {t:'أوجد ميل المستقيم المار بالنقطتين '+m('('+x1+', '+y1+')')+' و '+m('('+(x1+dx)+', '+(y1+dy)+')')+':',f:[{l:'الميل',v:k}],s:['الميل = فرق الصادات ÷ فرق السينات',E('[['+dy+'|'+dx+']] = '+k)]};},
+    function(){var a=ri(10,20),b=ri(8,18),i=ri(2,6);
+      return {t:'إذا كان '+m('n(A) = '+a)+' و '+m('n(B) = '+b)+' و '+m('n(A ∩ B) = '+i)+'، فأوجد '+m('n(A ∪ B)')+':',f:[{l:m('n(A ∪ B)'),v:a+b-i}],s:[E(a+' + '+b+' − '+i+' = '+(a+b-i))]};},
+    function(){var x=ri(-6,6),y=ri(-6,6),a=ri(-6,6),b=ri(-6,6);
+      return {t:'انسحبت النقطة '+m('('+x+', '+y+')')+' بالمتجه '+m('('+a+', '+b+')')+'. أوجد إحداثيات صورتها:',f:[{l:'الإحداثي السيني',v:x+a},{l:'الإحداثي الصادي',v:y+b}],s:['نجمع مركبات المتجه: '+E('('+x+' + ('+a+'), '+y+' + ('+b+')) = ('+(x+a)+', '+(y+b)+')')]};},
+    function(){var c=ri(6,16)*10;
+      return {t:'زاوية مركزية قياسها '+m(c+'°')+'. ما قياس الزاوية المحيطية المقابلة لنفس القوس (بالدرجات)؟',f:[{l:'القياس',v:c/2}],s:['المحيطية = نصف المركزية',E(c+'° ÷ 2 = '+(c/2)+'°')]};},
+    function(){var x=ri(5,30),p=ri(2,4),r=p+ri(1,3),q=ri(5,40),s=p*x+q-r*x;
+      return {t:'مستقيمان متوازيان يقطعهما قاطع، وزاويتان متناظرتان تعبيرهما '+m('('+p+'x '+sg(q)+')°')+' و '+m('('+r+'x '+sg(s)+')°')+'. أوجد '+m('x')+':',f:[{l:m('x'),v:x}],s:['المتناظرتان متساويتان: '+E(p+'x '+sg(q)+' = '+r+'x '+sg(s)),'نحل المعادلة: '+m('x = '+x)]};},
+    function(){var L=ri(2,9),k=ri(2,5);
+      return {t:'كُبِّر شكل بمعامل تكبير '+m('k = '+k)+'. إذا كان طول ضلع في الأصل '+m(L)+' سم، فما طول الضلع المناظر في الصورة (سم)؟',f:[{l:'الطول (سم)',v:L*k}],s:[E(k+' × '+L+' = '+(L*k))]};}
+  ];
+  var rnd={cur:null,n:0,ok:0,checked:false},rb=$('#rnd-body');
+  function rndNew(){
+    var g=GEN[ri(0,GEN.length-1)]();rnd.cur=g;rnd.checked=false;
+    rb.innerHTML='<div class="qz-top"><span>الأسئلة المحلولة: <b id="rnd-n">'+rnd.n+'</b></span><span>الصحيحة من أول مرة: <b id="rnd-ok">'+rnd.ok+'</b></span></div>'+
+      '<p class="qtext">'+g.t+'</p>'+exprHTML(g.e)+
+      '<form class="rform" autocomplete="off"><div class="fields">'+g.f.map(function(f,i){return '<div class="field"><label for="r'+i+'">'+f.l+'</label><input id="r'+i+'" class="ans rin" type="text" inputmode="text" autocomplete="off"></div>';}).join('')+
+      '</div><button class="btn" type="submit" style="margin-top:14px">تحقق</button></form><div class="fb" aria-live="polite" hidden></div>'+
+      '<div class="sol" hidden><p class="steps-h">طريقة الحل</p><ol>'+g.s.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ol></div>'+
+      '<div class="actions"><button class="btn ghost" type="button" data-act="show">اعرض طريقة الحل</button><button class="btn" type="button" data-act="new">سؤال جديد</button></div>';
+  }
+  function rndCheck(){
+    var g=rnd.cur,fb=rb.querySelector('.fb'),vals=$$('#rnd-body .rin').map(function(i){return parseNum(i.value);});
+    if(vals.some(function(v){return v===null;})){setFb(fb,'warn','<b>اكتب رقماً في كل خانة.</b> مثال: 7 أو −3');return;}
+    var ok=g.f.every(function(f,i){return Math.abs(vals[i]-f.v)<1e-9;});
+    if(!rnd.checked){rnd.checked=true;rnd.n++;if(ok)rnd.ok++;$('#rnd-n').textContent=rnd.n;$('#rnd-ok').textContent=rnd.ok;}
+    if(ok){setFb(fb,'good','<b>✓ إجابة صحيحة.</b>');rb.querySelector('.sol').hidden=false;}
+    else setFb(fb,'bad','<b>✗ ليست صحيحة.</b> حاول مرة ثانية، أو اضغط «اعرض طريقة الحل».');
+  }
+  function rndClick(b){
+    var a=b.getAttribute('data-act');
+    if(a==='new')rndNew();else if(a==='show')rb.querySelector('.sol').hidden=false;
+  }
+  rb.addEventListener('submit',function(e){e.preventDefault();rndCheck();});
+  rndNew();
+
+  startQuiz();
+  route();
+  /* ---------- language switch (Arabic / English) ----------
+     English is applied by translating Arabic text runs through a dictionary; layout flips to LTR. */
+  var LANG='ar';try{if(localStorage.getItem('math9.lang')==='en')LANG='en';}catch(e){}
+  var lb=$('#lang-btn');lb.textContent=LANG==='en'?'العربية':'English';
+  lb.addEventListener('click',function(){try{localStorage.setItem('math9.lang',LANG==='en'?'ar':'en');}catch(e){}location.reload();});
+  if(LANG==='en'){
+    var EN={"رياضيات الصف التاسع": "Grade 9 Mathematics", "مدرسة عقبة بن نافع": "Oqba Bin Nafi School", "بنك أسئلة الجبر": "Algebra question bank", "اقرأ طرق الحل في كل وحدة": "Read the solution methods in each unit", "ثم أجب عن الأسئلة": "then answer the questions", "وبعد كل إجابة تظهر خطوات الحل": "and after each answer the solution steps appear", "وحدات الموقع": "Site units", "الأسس": "Exponents", "المعادلات": "Equations", "الدوال الخطية": "Linear functions", "المجموعات": "Sets", "الهندسة": "Geometry", "أسئلة عشوائية": "Random questions", "اختبار": "Quiz", "تقدمي": "My progress", "تدريب مفتوح": "Open practice", "أسئلة جديدة بأرقام مختلفة في كل مرة": "New questions with different numbers every time", "من الجبر والهندسة": "from algebra and geometry", "هذا تدريب حر ولا يدخل في لوحة": "This is free practice and is not included in the panel", "اختبار قصير": "Short quiz", "اختبر نفسك": "Test yourself", "عشرة أسئلة اختيار من متعدد تُسحب عشوائياً من بنك الأسئلة": "Ten multiple-choice questions drawn randomly from the question bank", "وتتغير في كل مرة": "and they change every time", "الأسئلة من بنك الأسئلة الشامل في الرياضيات": "Questions from the comprehensive mathematics question bank", "أ": "A", "ب": "B", "ج": "C", "د": "D", "التمثيل البياني للمستقيم": "Graph of the line", "شكل فن للمجموعتين": "Venn diagram of the two sets", "و": "and", "المجموعتان": "The two sets", "بسّط التعبير الجبري التالي في أبسط صورة": "Simplify the following algebraic expression to its simplest form", "نضرب المعاملين": "Multiply the coefficients", "الأعداد": "the numbers", "نجمع أسس": "Add the exponents of", "لأن الأساس واحد": "because the base is the same", "نجمع النتائج": "Combine the results", "احسب قيمة قسمة المقدارين التاليين": "Find the value of dividing the following two expressions", "نقسم المعاملين": "Divide the coefficients", "نطرح أسس": "Subtract the exponents of", "تذكّر أن": "Remember that", "الناتج": "Result", "أوجد قيمة التعبير ذي الأس المرفوع لقوة": "Find the value of the expression raised to a power", "نرفع كل عامل داخل القوس إلى القوة": "Raise every factor inside the parentheses to the power", "قوة القوة": "Power of a power", "نضرب الأسس": "multiply the exponents", "اكتب المقدار ذا الأسس السالبة في صورة أسس موجبة": "Write the expression with positive exponents", "أس البسط ناقص أس المقام": "numerator exponent minus denominator exponent", "يصبح المقدار": "The expression becomes", "الأس السالب ينتقل إلى المقام فيصير موجباً": "A negative exponent moves to the denominator and becomes positive", "بسّط المقدار الجبري التالي": "Simplify the following algebraic expression", "نبسّط البسط أولاً": "First simplify the numerator", "فيصبح": "so it becomes", "نقسم على": "Divide by", "نطرح الأسس": "subtract the exponents", "بسّط المقدار الأسي التالي موضحاً خطوات الحل": "Simplify the following exponential expression, showing the steps", "الناتج النهائي": "Final result", "الأساس واحد": "The base is the same", "فنجمع الأسس في الضرب": "so we add the exponents in multiplication", "فنطرح الأسس": "so we subtract the exponents", "نحسب القيمة": "Calculate the value", "أوجد قيمة التعبير الجبري عندما": "Find the value of the algebraic expression when", "قيمة التعبير": "Value of the expression", "نعوّض": "Substitute", "ونضع العدد السالب بين قوسين": "and put the negative number in parentheses", "نحسب القوى أولاً": "Calculate the powers first", "نضرب ثم نطرح": "Multiply, then subtract", "أوجد قيمة": "Find the value of", "التي تحقق المعادلة الخطية": "that satisfies the linear equation", "نطرح": "Subtract", "من الطرفين": "from both sides", "نقسم الطرفين على": "Divide both sides by", "التحقق": "Check", "حل المعادلة التي تحتوي على أقواس": "Solve the equation containing parentheses", "نضيف": "Add", "للطرفين": "to both sides", "طريقة ثانية": "Second method", "نفك القوس فنحصل على": "Expand the parentheses to get", "ثم": "then", "فيكون": "so", "أوجد حل المعادلة الكسرية": "Solve the fractional equation", "نضرب الطرفين في المقام": "Multiply both sides by the denominator", "للتخلص من الكسر": "to get rid of the fraction", "أوجد مجموعة حل نظام المعادلتين الخطيتين": "Find the solution set of the system of linear equations", "معامل": "coefficient of", "واحد في المعادلتين": "is the same in both equations", "فنطرح الأولى من الثانية لنحذف": "so subtract the first from the second to eliminate", "نعوّض في": "Substitute in", "التحقق في المعادلة الثانية": "Check in the second equation", "حل نظام المعادلتين بطريقة الحذف": "Solve the system of equations by elimination", "ملاحظة": "Note", "في الملف الأصلي كُتب الطرفان الأيمنان مبدّلين": "In the original file the right-hand sides were swapped", "ولا يخرج حينها حل ضمن الخيارات": "and then no solution appears among the options", "صحّحناهما ليوافقا مفتاح الإجابة": "We corrected them to match the answer key", "نريد حذف": "We want to eliminate", "نضرب المعادلة الأولى في": "Multiply the first equation by", "فيصير معامل": "so the coefficient of", "هو": "is", "في الأولى و": "in the first and", "في الثانية": "in the second", "نجمع المعادلتين": "Add the two equations", "التحقق في": "Check in", "حل نظام المعادلتين التاليين موضحاً خطوات الحذف": "Solve the following system, showing the elimination steps", "معاملا": "The coefficients of", "متعاكسان": "are opposites", "فنجمع المعادلتين لنحذف": "so add the equations to eliminate", "حل النظام التالي بطريقة التعويض": "Solve the following system by substitution", "في الملف الأصلي كُتبت المعادلة الأولى": "In the original file the first equation was written", "وهذا لا يوافق مفتاح الإجابة": "which does not match the answer key", "فصحّحناها إلى": "so we corrected it to", "نعزل": "Isolate", "في المعادلة الأولى لأن معامله": "in the first equation because its coefficient", "نعوّض في المعادلة الثانية": "Substitute in the second equation", "نفك القوس ونجمع الحدود المتشابهة": "Expand the parentheses and combine like terms", "من الطرفين ثم نقسم على": "from both sides, then divide by", "احسب ميل المستقيم الذي يمر بالنقطتين": "Find the slope of the line passing through the points", "قانون الميل": "Slope formula", "ما هو المقطع الصادي": "What is the y-intercept", "للمستقيم الذي معادلته": "of the line whose equation is", "نقارن مع الصورة العامة": "Compare with the general form", "فنجد": "we find", "أو نضع": "or put", "أي أن المستقيم يقطع محور الصادات عند": "meaning the line crosses the y-axis at", "اكتب معادلة المستقيم الذي ميله": "Write the equation of the line whose slope is", "ومقطعه الصادي": "and y-intercept", "الصورة العامة": "General form", "حدد العلاقة بين المستقيمين": "Determine the relationship between the lines", "مستقيمان متوازيان": "Parallel lines", "مستقيمان متعامدان": "Perpendicular lines", "مستقيمان متقاطعان": "Intersecting lines", "مستقيمان متطابقان": "Coincident lines", "نقارن ميل كل مستقيم": "Compare the slope of each line", "المعامل الذي بجانب": "The coefficient next to", "الأول": "first", "والثاني": "and the second", "الميلان متساويان": "The slopes are equal", "والمقطعان الصاديان مختلفان": "and the y-intercepts are different", "إذن المستقيمان لا يتقاطعان أبداً": "so the lines never intersect", "وهما متوازيان": "and they are parallel", "مثّل بيانياً الدالة الخطية التالية موضحاً جدول النقاط والمقطعين": "Graph the following linear function, showing the table of points and the two intercepts", "جرّب على ورقة مربعات أولاً": "Try it first on graph paper", "ثم اضغط": "then press", "اعرض طريقة الحل": "Show solution", "لتقارن": "to compare", "نكوّن جدول قيم بتعويض قيم مختلفة ل": "We make a table of values by substituting different values of", "في": "in", "المقطع السيني": "x-intercept", "نضع": "Put", "فالنقطة": "so the point is", "المقطع الصادي": "y-intercept", "نعيّن النقاط على المستوى ونصل بينها بمسطرة": "Plot the points and join them with a ruler", "الميل": "Slope", "يعني أنه كل وحدتين إلى اليمين يرتفع المستقيم وحدة واحدة": "means that for every two units to the right the line rises one unit", "أوجد نقطة تقاطع المستقيم": "Find the point where the line", "مع محوري السينات والصادات": "meets the x-axis and y-axis", "عندما": "when", "نصل بين النقطتين فنحصل على المستقيم": "Join the two points to get the line", "إذا كانت": "If", "فإن مجموعة التقاطع": "then the intersection set", "هي": "is", "التقاطع هو العناصر الموجودة في المجموعتين معاً": "The intersection is the elements in both sets together", "العناصر المشتركة بين": "The elements common to", "باستخدام نفس المجموعتين أعلاه": "Using the same two sets above", "أوجد مجموعة الاتحاد": "find the union set", "الاتحاد يضم عناصر المجموعتين معاً": "The union includes the elements of both sets together", "وكل عنصر مشترك يُكتب مرة واحدة فقط": "and each common element is written only once", "نبدأ بعناصر": "We start with the elements of", "ثم نضيف من": "then add from", "العنصرين الجديدين": "the two new elements", "أوجد مجموعة الفرق": "Find the difference set", "العناصر الموجودة في": "The elements in", "وليست في": "and not in", "نحذف من": "Remove from", "العناصر المشتركة مع": "the elements shared with", "وهي": "which are", "الباقي من": "What remains of", "أيٌّ مما يلي يعبّر عن العلاقة الصحيحة إذا كانت": "Which of the following expresses the correct relationship if", "تعني أن كل عنصر في": "means that every element in", "موجود في": "is in", "عنصرا": "The elements", "هما": "are", "وكلاهما في": "and both are in", "إذن": "So", "صحيحة": "is correct", "الخيارات الأخرى خطأ": "The other options are wrong", "لأن": "because", "ليس في": "is not in", "وليست مجموعة خالية": "and it is not an empty set", "وليست": "and it is not", "إذا كان": "If", "فأوجد": "then find", "موضحاً القانون المستخدم": "stating the law used", "القانون": "The law", "نطرح عدد العناصر المشتركة لأننا عددناها مرتين": "We subtract the number of common elements because we counted them twice", "مرة في": "once in", "ومرة في": "and once in", "ارسم شكل فن": "Draw a Venn diagram", "يوضح العلاقة بين المجموعتين": "showing the relationship between the two sets", "وموقع العناصر المشتركة": "and the position of the common elements", "ارسمه على ورقة أولاً": "Draw it on paper first", "نرسم دائرتين متقاطعتين": "We draw two overlapping circles", "واحدة للمجموعة": "one for the set", "وأخرى للمجموعة": "and another for the set", "نضع العناصر المشتركة": "We place the common elements", "في منطقة التقاطع أولاً": "in the intersection region first", "ثم نضع العناصر الموجودة في": "then we place the elements that are in", "فقط": "only", "والموجودة في": "and those in", "المثلثات": "Triangles", "على المستوى الإحداثي": "on the coordinate plane", "المثلث": "Triangle", "وصورته": "and its image", "بالانسحاب": "under translation", "تكبير الشكل": "Enlargement of shape", "إلى": "to", "من المركز": "from center", "دائرة مركزها": "A circle with center", "زاوية مركزية": "central angle", "زاوية محيطية": "inscribed angle", "ومماس عند": "and a tangent at", "يقطعهما قاطع": "cut by a transversal", "نصف قطر": "radius", "وتر": "chord", "قطر": "diameter", "قوس": "arc", "بالاستعانة بالشكل": "Using the figure", "ما التحويل الهندسي الذي ينقل المثلث": "Which geometric transformation maps triangle", "إلى المثلث": "onto triangle", "انعكاس في محور الصادات": "Reflection in the y-axis", "انعكاس في محور السينات": "Reflection in the x-axis", "دوران": "Rotation of", "حول نقطة الأصل": "about the origin", "انسحاب بالمتجه": "Translation by the vector", "نأخذ رأساً من": "We take a vertex of", "وصورته في": "and its image in", "الإحداثي السيني تغيّرت إشارته والصادي بقي ثابتاً": "The x-coordinate changed sign and the y-coordinate stayed the same", "وهذه قاعدة الانعكاس في محور الصادات": "and this is the rule for reflection in the y-axis", "معادلة خط التماثل": "Equation of the line of symmetry", "مرآة الانعكاس": "mirror line", "بين": "between", "قيمة": "value of", "المرآة هي محور الصادات": "The mirror is the y-axis", "المحور الرأسي": "the vertical axis", "الذي يمر بالنقطة": "which passes through the point", "معادلته": "its equation", "مع عقارب الساعة حول": "clockwise about", "عكس عقارب الساعة حول": "counter-clockwise about", "حول": "about", "انعكاس في المستقيم": "Reflection in the line", "نجرّب القاعدة": "We try the rule", "وهي دوران": "which is a rotation of", "مع عقارب الساعة حول الأصل": "clockwise about the origin", "النتائج تطابق رؤوس": "The results match the vertices of", "فالتحويل": "so the transformation is", "مع عقارب الساعة": "clockwise", "نقطة المركز": "center point", "انسحب المثلث": "Translating triangle", "بالمتجه": "by the vector", "لتكوين المثلث": "forms triangle", "أوجد صورة الرأس": "Find the image of the vertex", "الإحداثي السيني": "x-coordinate", "الإحداثي الصادي": "y-coordinate", "قاعدة الانسحاب": "Translation rule", "نطبقها على الرأس": "Apply it to the vertex", "وبالمثل الرأسان الآخران": "Similarly the other two vertices", "تم تكبير الشكل": "Enlarging shape", "للحصول على": "gives", "حدد إحداثيات مركز التكبير": "Find the coordinates of the center of enlargement", "نصل كل رأس في": "Join each vertex in", "بصورته في": "to its image in", "بمستقيم": "with a line", "المستقيمات تلتقي في النقطة": "The lines meet at the point", "وهي مركز التكبير": "which is the center of enlargement", "احسب معامل مقياس التكبير": "Find the scale factor of the enlargement", "الذي ينقل": "that maps", "معامل التكبير": "Scale factor", "نقارن ضلعين متناظرين": "We compare two corresponding sides", "القاعدة السفلية في": "The bottom base in", "من": "of", "فطولها": "so its length is", "وفي": "and in", "إذا كان طول أحد أضلاع": "If the length of one side of", "يساوي": "equals", "سم": "cm", "فما طول الضلع المناظر له في": "what is the length of the corresponding side in", "بالسنتيمتر": "in centimeters", "الطول": "Length", "الطول الجديد": "New length", "الطول الأصلي": "original length", "في الدائرة المبينة": "In the circle shown", "مركزها": "is its center", "والزاوية المركزية": "and the central angle", "أوجد الزاوية المحيطية": "Find the inscribed angle", "المقابلة لنفس القوس": "subtending the same arc", "بالدرجات": "in degrees", "الزاوية المحيطية تساوي نصف الزاوية المركزية المشتركة معها في نفس القوس": "The inscribed angle equals half the central angle on the same arc", "ما المفهوم الهندسي للقطعة المستقيمة": "What is the geometric concept of the line segment", "في الشكل": "in the figure", "تصل مركز الدائرة": "It joins the center of the circle", "بنقطة": "to point", "على المحيط": "on the circumference", "فهي نصف قطر": "so it is a radius", "ما المفهوم الهندسي للخط الأحمر المار بالنقطة": "What is the geometric concept of the red line through point", "مماس للدائرة": "tangent to the circle", "قاطع": "secant", "الخط الأحمر يلامس الدائرة في نقطة واحدة فقط هي": "The red line touches the circle at one point only, which is", "فهو مماس": "so it is a tangent", "ما المفهوم الهندسي للمنطقة المظللة": "What is the geometric concept of the shaded region", "قطاع دائري": "circular sector", "قطعة دائرية": "circular segment", "حلقة": "ring", "نصف دائرة": "semicircle", "المنطقة محصورة بين نصفي القطر": "The region is bounded by the radii", "والقوس": "and the arc", "وهذا هو القطاع الدائري": "and this is the circular sector", "ما العلاقة بين مماس الدائرة ونصف القطر المار بنقطة التماس": "What is the relationship between a tangent to a circle and the radius through the point of tangency", "متعامدان": "perpendicular", "الزاوية بينهما": "the angle between them is", "متوازيان": "parallel", "ينطبقان": "coincident", "المماس عمودي على نصف القطر المار بنقطة التماس": "The tangent is perpendicular to the radius through the point of tangency", "والزاوية بينهما": "and the angle between them is", "المستقيمان": "The lines", "الزاويتان المتناظرتان تعبيرهما": "The corresponding angles have expressions", "أوجد": "Find", "المتناظرتان متساويتان": "Corresponding angles are equal", "ننقل الحدود": "Move the terms", "احسب قياس الزاوية": "Find the measure of angle", "المتكاملة": "supplementary", "المكمّلة على استقامة": "supplementary on a straight line", "مع الزاوية المجاورة لها على": "with the adjacent angle on", "الزاوية المجاورة": "The adjacent angle", "الزاويتان على مستقيم مجموعهما": "Two angles on a straight line sum to", "ما الخاصية الهندسية المستعملة لإيجاد قياس الزاوية": "Which geometric property is used to find the measure of angle", "انظر الزاويتين": "see angles", "الزاويتان المتناظرتان متساويتان": "Corresponding angles are equal", "الزاويتان المتبادلتان داخلياً مجموعهما": "Alternate interior angles sum to", "مجموع زوايا المثلث": "The sum of the angles of a triangle", "الزاويتان المتقابلتان بالرأس": "Vertically opposite angles", "في الموضع نفسه عند تقاطع القاطع مع المستقيمين المتوازيين": "are in the same position where the transversal meets the two parallel lines", "فهما متناظرتان ومتساويتان": "so they are corresponding and equal", "الوحدة الأولى": "Unit one", "العبارات الجبرية وقوانين الأسس": "Algebraic expressions and laws of exponents", "ضرب وقسمة القوى": "Multiplying and dividing powers", "الأسس السالبة": "negative exponents", "وتبسيط المقادير الجبرية": "and simplifying algebraic expressions", "قوانين الأسس": "Laws of exponents", "ضرب قوى لها الأساس نفسه": "Multiplying powers with the same base", "نجمع الأسس": "add the exponents", "قسمة قوى لها الأساس نفسه": "Dividing powers with the same base", "قوة حاصل الضرب": "Power of a product", "نرفع كل عامل للقوة": "raise each factor to the power", "الأس السالب ينتقل إلى المقام": "A negative exponent moves to the denominator", "أي عدد غير الصفر أسه صفر يساوي": "Any non-zero number with exponent zero equals", "خطوات تبسيط الحدود الجبرية": "Steps to simplify algebraic terms", "تعامل مع المعاملات": "Deal with the coefficients", "وحدها": "on their own", "اضرب أو اقسم": "multiply or divide", "ثم تعامل مع كل متغير وحده بقوانين الأسس": "then deal with each variable on its own using the laws of exponents", "المتغير الذي لا أس له أسه": "A variable with no exponent has exponent", "مثل": "such as", "عند التعويض": "When substituting", "ضع العدد السالب بين قوسين ثم احسب القوى قبل الضرب": "put the negative number in parentheses, then calculate the powers before multiplying", "الوحدة الثانية": "Unit two", "المعادلات الخطية وأنظمة المعادلات بمجهولين": "Linear equations and systems of equations in two unknowns", "حل معادلة بمجهول واحد": "Solving an equation in one unknown", "وحل أنظمة المعادلات بطريقتي الحذف والتعويض": "and solving systems of equations by elimination and substitution", "معادلة بمجهول واحد": "Equation in one unknown", "افتح الأقواس إن وجدت": "Expand parentheses if there are any", "إن كان في المعادلة كسر": "If the equation has a fraction", "اضرب الطرفين في المقام": "multiply both sides by the denominator", "اجمع الحدود المتشابهة": "Combine like terms", "انقل الأعداد إلى طرف والمجهول إلى الطرف الآخر بالعملية العكسية": "Move the numbers to one side and the unknown to the other using the inverse operation", "اقسم على معامل": "Divide by the coefficient of", "ثم تحقق بالتعويض": "then check by substitution", "طريقة الحذف": "Elimination method", "ضع المعادلتين تحت بعضهما": "Write the two equations one under the other", "اضرب إحدى المعادلتين": "Multiply one of the equations", "أو كلتيهما": "or both", "في عدد مناسب ليتساوى معامل أحد المتغيرين في القيمة المطلقة": "by a suitable number so that one variable has the same absolute coefficient", "اجمع المعادلتين إذا اختلفت الإشارتان": "Add the equations if the signs differ", "واطرحهما إذا تشابهتا": "and subtract them if they are the same", "فيُحذف المتغير": "so the variable is eliminated", "حل المعادلة الناتجة": "Solve the resulting equation", "ثم عوّض لإيجاد المتغير الآخر": "then substitute to find the other variable", "طريقة التعويض": "Substitution method", "اعزل أحد المتغيرين في إحدى المعادلتين": "Isolate one variable in one of the equations", "والأسهل ما معامله": "the easiest is the one whose coefficient is", "عوّض الناتج في المعادلة الأخرى فتصير بمجهول واحد": "Substitute the result in the other equation so it has one unknown", "حلّها": "Solve it", "ثم عوّض القيمة لإيجاد المتغير الثاني": "then substitute the value to find the second variable", "تحقق بالتعويض في المعادلتين": "Check by substituting in both equations", "الوحدة الثالثة": "Unit three", "الدوال الخطية والتمثيل البياني والميل": "Linear functions, graphing and slope", "معادلة المستقيم": "Equation of a line", "المقاطع الإحداثية": "Intercepts", "والرسم البياني": "and graphing", "قوانين المستقيم": "Line formulas", "حيث": "where", "الميل و": "slope and", "ضع": "Put", "واحسب": "and calculate", "العلاقة بين مستقيمين": "Relationship between two lines", "الميلان متساويان والمقطعان الصاديان مختلفان": "The slopes are equal and the y-intercepts are different", "متقاطعان": "intersecting", "الميلان مختلفان": "The slopes are different", "متطابقان": "coincident", "الميل والمقطع الصادي متساويان": "The slope and y-intercept are equal", "للرسم": "For graphing", "كوّن جدول قيم لثلاث نقاط على الأقل": "Make a table of values for at least three points", "عيّنها": "Plot them", "ثم صل بينها بالمسطرة": "then join them with a ruler", "الوحدة الرابعة": "Unit four", "المجموعات والعمليات عليها وأشكال فن": "Sets, operations on them and Venn diagrams", "التقاطع": "Intersection", "الاتحاد": "Union", "الفرق": "Difference", "المجموعة الجزئية": "Subset", "وشكل فن": "and Venn diagram", "العمليات على المجموعات": "Operations on sets", "عناصر المجموعتين معاً دون تكرار": "The elements of both sets together without repetition", "عناصر": "elements", "التي ليست في": "that are not in", "كل عنصر في": "Every element in", "عدد العناصر وشكل فن": "Number of elements and Venn diagram", "في شكل فن ارسم دائرتين متقاطعتين": "In a Venn diagram draw two overlapping circles", "وضع العناصر المشتركة في منطقة التقاطع أولاً": "and put the common elements in the intersection first", "ثم عناصر كل مجموعة وحدها": "then the elements of each set on its own", "الوحدة الخامسة": "Unit five", "الهندسة الإحداثية والتحويلات الهندسية": "Coordinate geometry and geometric transformations", "الانعكاس والدوران والانسحاب على المستوى الإحداثي": "Reflection, rotation and translation on the coordinate plane", "والتكبير ومعامل المقياس": "and enlargement and scale factor", "التحويلات على المستوى الإحداثي": "Transformations on the coordinate plane", "الانعكاس في محور الصادات": "Reflection in the y-axis", "الانعكاس في محور السينات": "Reflection in the x-axis", "عكس عقارب الساعة": "counter-clockwise", "الانسحاب بالمتجه": "Translation by the vector", "التكبير": "Enlargement", "طول الضلع في الصورة": "length of the side in the image", "طول الضلع المناظر في الأصل": "length of the corresponding side in the original", "مركز التكبير": "Center of enlargement", "نقطة تلتقي فيها المستقيمات الواصلة بين كل نقطة وصورتها": "the point where the lines joining each point to its image meet", "الوحدة السادسة": "Unit six", "أجزاء الدائرة والزوايا في الدائرة": "Parts of the circle and angles in the circle", "نظريات الزوايا والمماس": "Angle theorems and tangents", "والزوايا الناتجة عن توازي المستقيمات": "and angles formed by parallel lines", "الدائرة": "The circle", "الزاوية المحيطية": "The inscribed angle", "نصف الزاوية المركزية المشتركة معها في نفس القوس": "half the central angle on the same arc", "المماس عمودي على نصف القطر عند نقطة التماس": "The tangent is perpendicular to the radius at the point of tangency", "نصف القطر": "Radius", "من المركز إلى المحيط": "from the center to the circumference", "القطاع الدائري": "Circular sector", "منطقة بين نصفي قطر وقوس": "a region between two radii and an arc", "المستقيمات المتوازية والقاطع": "Parallel lines and a transversal", "الزاويتان المتبادلتان داخلياً متساويتان": "Alternate interior angles are equal", "الزاويتان المتجاورتان على مستقيم مجموعهما": "Adjacent angles on a straight line sum to", "صحيح": "Correct", "خاطئ": "Wrong", "لم تتم الإجابة": "Not answered", "المحاولات": "Attempts", "إجابة صحيحة": "Correct answer", "هذه خطوات الحل للمراجعة": "Here are the solution steps for review", "آخر محاولة لم تكن صحيحة": "Your last attempt was not correct", "جرّب خياراً آخر": "Try another option", "أو اضغط": "or press", "راجع طرق الحل ثم حاول مرة ثانية": "Review the solution methods, then try again", "لوحة التقدم": "Progress panel", "يُحفظ تقدمك تلقائياً على هذا الجهاز وفي هذا المتصفح": "Your progress is saved automatically on this device and in this browser", "تنبيه": "Warning", "تعذّر استخدام التخزين في هذا المتصفح": "Storage could not be used in this browser", "لذلك لن يُحفظ تقدمك بعد إغلاق الصفحة": "so your progress will not be saved after you close the page", "إجمالي الأسئلة": "Total questions", "أسئلة أجبت عنها": "Answered questions", "أسئلة متبقية": "Remaining questions", "الإجابات الصحيحة": "Correct answers", "الإجابات الخاطئة": "Wrong answers", "نسبة الإجابات الصحيحة": "Accuracy", "الإجابات الصحيحة والخاطئة والنسبة تُحسب من جميع المحاولات": "Correct and wrong answers and the percentage are counted from all attempts", "أما إجمالي الأسئلة والمتبقية فيُحسبان لكل سؤال مرة واحدة": "while total and remaining questions are counted once per question", "الأسئلة المقالية": "Essay questions", "غير محتسبة لأنك تقارنها بالحل بنفسك": "are not counted because you compare them with the solution yourself", "آخر سؤال وصلت إليه": "Last question you reached", "س": "Q", "تابع من س": "Continue from Q", "لم تبدأ بعد": "You have not started yet", "اختر وحدة وابدأ بحل الأسئلة": "Choose a unit and start solving questions", "اختيار من متعدد": "Multiple choice", "اكتب الإجابة": "Type the answer", "سؤال مقالي": "Essay question", "طريقة الحل": "Solution steps", "الجواب": "Answer", "تحقق": "Check", "أعد المحاولة": "Try again", "طرق الحل": "Solution methods", "أنجزت": "Completed", "ليست صحيحة": "Not correct", "اكتب رقماً في كل خانة": "Enter a number in every box", "مثال": "Example", "أو": "or", "راجع طرق الحل في أعلى الوحدة ثم حاول مرة ثانية": "Review the solution methods at the top of the unit, then try again", "ممتاز": "Excellent", "مستواك قوي في الجبر": "your level in algebra is strong", "جيد": "Good", "راجع الأسئلة التي أخطأت فيها ثم أعد الاختبار": "Review the questions you missed, then retake the quiz", "راجع طرق الحل في كل وحدة وتدرّب على الأسئلة": "Review the solution methods in each unit and practice the questions", "ثم أعد الاختبار": "then retake the quiz", "راجع س": "Review Q", "نتيجتك": "Your result", "الأسئلة التي أخطأت فيها": "Questions you missed", "أعد الاختبار": "Retake the quiz", "السؤال": "Question", "الدرجة": "Score", "عرض النتيجة": "Show result", "السؤال التالي": "Next question", "إجابة غير صحيحة": "Incorrect answer", "احسب قيمة المقدار": "Calculate the value of the expression", "نجمع الأسس في الضرب": "Add the exponents in multiplication", "نطرح أس القسمة": "Subtract the divisor exponent", "القيمة": "Value", "ننقل الثابت": "Move the constant", "أوجد قيمة التعبير عندما": "Find the value of the expression when", "أوجد ميل المستقيم المار بالنقطتين": "Find the slope of the line through the points", "فرق الصادات": "difference of y-values", "فرق السينات": "difference of x-values", "انسحبت النقطة": "Translating the point", "أوجد إحداثيات صورتها": "Find the coordinates of its image", "نجمع مركبات المتجه": "Add the components of the vector", "زاوية مركزية قياسها": "A central angle measuring", "ما قياس الزاوية المحيطية المقابلة لنفس القوس": "What is the measure of the inscribed angle subtending the same arc", "القياس": "Measure", "المحيطية": "The inscribed angle", "نصف المركزية": "half the central angle", "مستقيمان متوازيان يقطعهما قاطع": "Two parallel lines cut by a transversal", "وزاويتان متناظرتان تعبيرهما": "and two corresponding angles have expressions", "نحل المعادلة": "Solve the equation", "كُبِّر شكل بمعامل تكبير": "A shape is enlarged by scale factor", "إذا كان طول ضلع في الأصل": "If the original side length is", "فما طول الضلع المناظر في الصورة": "what is the length of the corresponding side in the image", "الأسئلة المحلولة": "Questions solved", "الصحيحة من أول مرة": "Correct on the first try", "سؤال جديد": "New question", "حاول مرة ثانية": "Try again", "بسّط التعبير الجبري التالي": "Simplify the following algebraic expression", "فنطرح الأسس في القسمة": "so we subtract the exponents in division", "نعوّض ونضع العدد السالب بين قوسين": "We substitute and put the negative number in parentheses", "والعكس صحيح": "and vice versa", "يبقى المعامل": "The coefficient", "في البسط": "stays in the numerator", "وينتقل": "and moves", "إلى المقام و": "to the denominator and", "إلى البسط": "to the numerator", "أوجد قيمة المقدار التالي": "Find the value of the following expression", "نحسب كل حد": "Calculate each term", "نجمع": "Add", "متعاكسان فنجمع المعادلتين لنحذف": "are opposites, so add the equations to eliminate", "نعوّض في المعادلة الأولى": "Substitute in the first equation", "في المعادلة الثانية": "in the second equation", "متعاكسان فنجمع المعادلتين": "are opposites, so add the equations", "التحقق في المعادلة الأولى": "Check in the first equation", "ما هو المقطع الصادي للمستقيم الذي معادلته": "What is the y-intercept of the line whose equation is", "مستقيم ميله": "A line with slope", "ويمر بالنقطة": "and passing through the point", "أوجد مقطعه الصادي": "Find its y-intercept", "الميل في الأول": "The slope in the first is", "وفي الثاني": "and in the second", "إذن المستقيمان لا يتقاطعان أبداً وهما متوازيان": "So the lines never intersect and they are parallel", "أوجد المقطع السيني للمستقيم الذي معادلته": "Find the x-intercept of the line whose equation is", "نقارن الميلين": "We compare the two slopes", "حاصل ضرب الميلين": "Product of the slopes", "حاصل ضرب الميلين يساوي": "The product of the slopes equals", "إذن المستقيمان متعامدان": "so the lines are perpendicular", "فأوجد مجموعة الفرق": "find the difference set", "في صف فيه": "In a class of", "طالباً": "students", "يلعب كل طالب كرة القدم أو كرة السلة أو اللعبتين معاً": "every student plays football, basketball or both", "طالباً يلعبون كرة القدم و": "students play football and", "طالباً يلعبون كرة السلة": "students play basketball", "فكم طالباً يلعب اللعبتين معاً": "how many students play both", "عدد الطلاب": "Number of students", "نرمز ب": "We denote by", "لكرة القدم وب": "football and by", "لكرة السلة": "basketball", "نعوّض في القانون": "Substitute in the law", "فأيٌّ مما يلي صحيح": "Which of the following is true", "والخيارات الأخرى خطأ": "and the other options are wrong", "انعكست النقطة": "Reflecting the point", "في محور السينات": "in the x-axis", "في محور الصادات": "in the y-axis", "دُوِّرت النقطة": "Rotating the point", "بزاوية": "by an angle of", "مع عقارب الساعة حول نقطة الأصل": "clockwise about the origin", "ما إحداثيات صورتها": "What are the coordinates of its image", "الدوران": "A rotation of", "حول الأصل يغيّر إشارة الإحداثيين معاً": "about the origin changes the signs of both coordinates", "كُبِّر مثلث بمعامل تكبير": "A triangle is enlarged by scale factor", "إذا كان طول أحد أضلاعه": "If the length of one of its sides is", "فما طول الضلع المناظر في الصورة بالسنتيمتر": "what is the length of the corresponding side in the image in centimeters", "طول ضلع في شكل": "The length of a side in a shape is", "وطول الضلع المناظر له في صورته بعد التكبير": "and the length of its corresponding side in the image after enlargement is", "احسب معامل التكبير": "Find the scale factor", "كُبِّرت النقطة": "Enlarging the point", "بمعامل تكبير": "by scale factor", "من مركز التكبير نقطة الأصل": "from the center of enlargement, the origin", "نضرب كل إحداثي في معامل التكبير": "Multiply each coordinate by the scale factor", "في دائرة": "In a circle", "قياس الزاوية المركزية": "the central angle measures", "أوجد قياس الزاوية المحيطية المقابلة لنفس القوس بالدرجات": "Find the measure of the inscribed angle subtending the same arc in degrees", "قياس الزاوية المحيطية": "the inscribed angle measures", "أوجد قياس الزاوية المركزية المقابلة لنفس القوس بالدرجات": "Find the measure of the central angle subtending the same arc in degrees", "الزاوية المركزية تساوي ضعف الزاوية المحيطية المشتركة معها في نفس القوس": "The central angle equals twice the inscribed angle on the same arc", "ما قياس الزاوية بين المماس ونصف القطر المار بنقطة التماس": "What is the measure of the angle between the tangent and the radius through the point of tangency", "من النقطة": "From the point", "خارج الدائرة رُسم المماس": "outside the circle, the tangent is drawn", "نقطة التماس": "is the point of tangency", "مركز الدائرة": "is the center of the circle", "فإن": "so", "متوازيان ويقطعهما قاطع": "are parallel and cut by a transversal", "الزاويتان المتبادلتان داخلياً تعبيرهما": "The alternate interior angles have expressions", "المتبادلتان داخلياً متساويتان": "Alternate interior angles are equal", "زاويتان متجاورتان على مستقيم": "Two adjacent angles on a straight line", "قياسهما": "measuring", "تقاطع مستقيمان": "Two lines intersect", "وقياس إحدى الزوايا الناتجة": "and one of the resulting angles measures", "ما قياس الزاوية المقابلة لها بالرأس": "What is the measure of the vertically opposite angle", "الزاويتان المتقابلتان بالرأس متساويتان": "Vertically opposite angles are equal", "فقياسها": "so its measure is", "أنا": "Me", "تقدمك وإعداداتك": "Your progress and settings", "أعلى ستريك للإجابات الصحيحة": "Best streak of correct answers", "الستريك هو أكبر عدد من الإجابات الصحيحة المتتالية دون خطأ بينها": "A streak is the most correct answers in a row with no mistake in between", "الإعدادات": "Settings", "المظهر": "Appearance", "تلقائي": "Auto", "فاتح": "Light", "داكن": "Dark", "يتبع إعدادات جهازك": "follows your device settings", "راجع أسئلتي الخاطئة": "Review my wrong questions", "أسئلة كانت آخر محاولة فيها خاطئة": "Questions whose last attempt was wrong", "صحّحها وستختفي من القائمة": "Correct them and they will disappear from the list", "ابدأ بأول سؤال": "Start with the first question", "لا توجد أسئلة خاطئة": "There are no wrong questions", "أحسنت": "Well done", "ستظهر هنا الأسئلة التي تخطئ فيها": "Questions you get wrong will appear here", "بيانات التقدم": "Progress data", "مسح تقدمي": "Reset my progress", "هل أنت متأكد": "Are you sure", "سيُحذف كل تقدمك وجميع محاولاتك ولا يمكن استرجاعها": "All your progress and attempts will be deleted and cannot be recovered", "نعم": "Yes", "امسح كل شيء": "delete everything", "إلغاء": "Cancel"};
+    var RUN=/[\u0621-\u063A\u0641-\u0652]+(?:[ \u00a0]+[\u0621-\u063A\u0641-\u0652]+)*/g;
+    var tr=function(n){var v=n.nodeValue;if(!/[\u0600-\u06FF]/.test(v))return;
+      n.nodeValue=v.replace(RUN,function(r){return Object.prototype.hasOwnProperty.call(EN,r)?EN[r]:r;}).replace(/\u060C/g,',').replace(/\u061F/g,'?').replace(/\u0640/g,'').replace(/[\u00AB\u00BB]/g,'"');};
+    var walk=function(r){var w=document.createTreeWalker(r,4),n,a=[];while((n=w.nextNode()))a.push(n);a.forEach(tr);};
+    app.setAttribute('dir','ltr');app.setAttribute('lang','en');document.documentElement.lang='en';document.title='Grade 9 Mathematics';
+    walk(app);
+    new MutationObserver(function(ms){ms.forEach(function(x){Array.prototype.forEach.call(x.addedNodes,function(n){if(n.nodeType===3)tr(n);else if(n.nodeType===1)walk(n);});});}).observe(app,{childList:true,subtree:true});
+  }
+
+})();
+</script>
+
+</body></html>
